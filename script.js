@@ -115,6 +115,63 @@ function initWaveform(canvasId, options = {}) {
 
 // Initialize waveforms when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+    initWaveform('downloadWaveform', { barCount: 24 });
+    initDemoAnimation();
+});
+
+// ===== LIVE DEMO ANIMATION =====
+function initDemoAnimation() {
+    const states = ['demoState1', 'demoState2', 'demoState3', 'demoState4'];
+    const typedText = document.getElementById('typedText');
+    const textToType = "Yeah, so we're aiming to have the report finalized by Friday morning...";
+    let currentState = 0;
+    let typingInterval;
+    
+    function showState(index) {
+        // Hide all states
+        states.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('active');
+        });
+        
+        // Show current state
+        const current = document.getElementById(states[index]);
+        if (current) {
+            current.classList.add('active');
+            
+            // If it's the typing state, start typing
+            if (index === 2 && typedText) {
+                typedText.textContent = '';
+                let charIndex = 0;
+                clearInterval(typingInterval);
+                typingInterval = setInterval(() => {
+                    if (charIndex < textToType.length) {
+                        typedText.textContent += textToType[charIndex];
+                        charIndex++;
+                    } else {
+                        clearInterval(typingInterval);
+                    }
+                }, 35);
+            }
+        }
+    }
+    
+    function cycle() {
+        showState(currentState);
+        
+        // State durations: listening=2s, transcribing=2s, typing=3s, done=2s
+        const durations = [2000, 2000, 3500, 2000];
+        
+        setTimeout(() => {
+            currentState = (currentState + 1) % states.length;
+            cycle();
+        }, durations[currentState]);
+    }
+    
+    // Start the cycle
+    cycle();
+}
+document.addEventListener('DOMContentLoaded', () => {
     initWaveform('waveformCanvas', { barCount: 36 });
     initWaveform('downloadWaveform', { barCount: 24 });
 });
