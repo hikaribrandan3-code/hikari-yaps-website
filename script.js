@@ -45,85 +45,11 @@ document.querySelectorAll('.faq-question').forEach(question => {
     });
 });
 
-// ===== WAVEFORM CANVAS ANIMATION =====
-function initWaveform(canvasId, options = {}) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    const dpr = window.devicePixelRatio || 1;
-    
-    function resize() {
-        const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-        ctx.scale(dpr, dpr);
-    }
-    
-    resize();
-    window.addEventListener('resize', resize);
-    
-    const barCount = options.barCount || 40;
-    const bars = [];
-    
-    for (let i = 0; i < barCount; i++) {
-        bars.push({
-            height: Math.random(),
-            speed: 0.02 + Math.random() * 0.04,
-            offset: Math.random() * Math.PI * 2
-        });
-    }
-    
-    let time = 0;
-    
-    function draw() {
-        const rect = canvas.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        
-        ctx.clearRect(0, 0, width, height);
-        
-        const barWidth = (width / barCount) * 0.6;
-        const gap = (width / barCount) * 0.4;
-        
-        bars.forEach((bar, i) => {
-            const center = barCount / 2;
-            const dist = Math.abs(i - center) / center;
-            const envelope = 1 - dist * dist;
-            
-            const h = (0.3 + 0.7 * Math.sin(time * bar.speed + bar.offset)) * envelope * height * 0.8;
-            const x = i * (barWidth + gap) + gap / 2;
-            const y = (height - h) / 2;
-            
-            const gradient = ctx.createLinearGradient(x, y, x, y + h);
-            gradient.addColorStop(0, 'rgba(233, 181, 76, 0.1)');
-            gradient.addColorStop(0.5, 'rgba(233, 181, 76, 0.6)');
-            gradient.addColorStop(1, 'rgba(233, 181, 76, 0.1)');
-            
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.roundRect(x, y, barWidth, h, barWidth / 2);
-            ctx.fill();
-        });
-        
-        time += 0.05;
-        requestAnimationFrame(draw);
-    }
-    
-    draw();
-}
-
-// Initialize waveforms when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    initWaveform('downloadWaveform', { barCount: 24 });
-    initDemoAnimation();
-});
-
 // ===== LIVE DEMO ANIMATION =====
 function initDemoAnimation() {
     const states = ['demoState1', 'demoState2', 'demoState3', 'demoState4'];
     const typedText = document.getElementById('typedText');
-    const textToType = "Yeah, so we're aiming to have the report finalized by Friday morning...";
+    const textToType = "Sí, entonces apuntamos a tener el informe listo para el viernes por la mañana...";
     let currentState = 0;
     let typingInterval;
     
@@ -159,7 +85,7 @@ function initDemoAnimation() {
     function cycle() {
         showState(currentState);
         
-        // State durations: listening=2s, transcribing=2s, typing=3s, done=2s
+        // State durations: listening=2s, transcribing=2s, typing=3.5s, done=2s
         const durations = [2000, 2000, 3500, 2000];
         
         setTimeout(() => {
@@ -171,9 +97,35 @@ function initDemoAnimation() {
     // Start the cycle
     cycle();
 }
-document.addEventListener('DOMContentLoaded', () => {
-    initWaveform('waveformCanvas', { barCount: 36 });
-    initWaveform('downloadWaveform', { barCount: 24 });
+
+// ===== PROGRESS BAR ANIMATION =====
+function animateProgressBar() {
+    const progressFill = document.querySelector('.progress-fill');
+    if (!progressFill) return;
+    
+    const targetWidth = progressFill.style.width;
+    progressFill.style.width = '0%';
+    
+    setTimeout(() => {
+        progressFill.style.width = targetWidth;
+    }, 400);
+}
+
+// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
 });
 
 // ===== SCROLL ANIMATIONS =====
@@ -191,23 +143,9 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Add fade-in class to elements and observe them
-document.querySelectorAll('.feature-card, .step, .testimonial-card, .faq-item, .comparison-row').forEach(el => {
+document.querySelectorAll('.feature-card, .step, .pricing-card, .faq-item, .comparison-row, .contact-card').forEach(el => {
     el.classList.add('fade-in');
     observer.observe(el);
-});
-
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
 });
 
 // ===== STAT COUNTER ANIMATION =====
@@ -255,3 +193,23 @@ const heroStats = document.querySelector('.hero-stats');
 if (heroStats) {
     statsObserver.observe(heroStats);
 }
+
+// ===== PROGRESS BAR OBSERVER =====
+const progressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateProgressBar();
+            progressObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+const pricingCard = document.querySelector('.pricing-card-free');
+if (pricingCard) {
+    progressObserver.observe(pricingCard);
+}
+
+// ===== INITIALIZE ON DOM READY =====
+document.addEventListener('DOMContentLoaded', () => {
+    initDemoAnimation();
+});

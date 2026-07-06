@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hikari Yaps — Turn Your Speech Into Text. Instantly.</title>
-    <meta name="description" content="Local speech-to-text for macOS. 100% offline. No subscriptions. Hold a key, talk, release — text appears in any app.">
+    <title>iVoz — Tu voz se convierte en texto. Al instante.</title>
+    <meta name="description" content="Dictado por voz para macOS. 100% offline. Sin suscripciones. Presiona una tecla, habla, suelta — el texto aparece en cualquier app.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -16,20 +16,21 @@
         <div class="nav-container">
             <a href="#" class="logo">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <rect width="28" height="28" rx="7" fill="#1C1915"/>
-                    <path d="M8 14c0-3 2-5 5-5s5 2 5 5-2 5-5 5" stroke="#E9B54C" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="13" cy="14" r="1.5" fill="#E9B54C"/>
-                    <path d="M18 11v6M20 13v2M16 12v4" stroke="#E9B54C" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                    <rect width="28" height="28" rx="8" fill="#0071e3"/>
+                    <path d="M8 14c0-3 2-5 5-5s5 2 5 5-2 5-5 5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="13" cy="14" r="1.5" fill="white"/>
+                    <path d="M18 11v6M20 13v2M16 12v4" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
                 </svg>
-                <span>Hikari Yaps</span>
+                <span>iVoz</span>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="#faq">FAQ</a>
-                <a href="#download" class="nav-cta">Download</a>
+                <a href="#features">Características</a>
+                <a href="#how-it-works">Cómo Funciona</a>
+                <a href="#pricing">Precios</a>
+                <a href="#faq">Preguntas</a>
+                <a href="HikariYaps.zip" class="nav-cta" download>Descargar</a>
             </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -39,169 +40,134 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-bg">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="grid-pattern"></div>
-            <div class="side-visual left-visual">
-                <svg viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="200" cy="400" r="300" stroke="#E9B54C" stroke-width="1" opacity="0.08"/>
-                    <circle cx="200" cy="400" r="220" stroke="#E9B54C" stroke-width="1" opacity="0.12"/>
-                    <circle cx="200" cy="400" r="140" stroke="#E9B54C" stroke-width="1.5" opacity="0.15"/>
-                    <path d="M100 350 Q200 200 300 350 Q200 500 100 350" stroke="#E9B54C" stroke-width="2" opacity="0.1" fill="none"/>
-                    <path d="M80 400 Q200 150 320 400 Q200 650 80 400" stroke="#E9B54C" stroke-width="1" opacity="0.06" fill="none"/>
-                    <circle cx="200" cy="280" r="6" fill="#E9B54C" opacity="0.2"/>
-                    <circle cx="200" cy="520" r="6" fill="#E9B54C" opacity="0.2"/>
-                    <circle cx="120" cy="400" r="4" fill="#E9B54C" opacity="0.15"/>
-                    <circle cx="280" cy="400" r="4" fill="#E9B54C" opacity="0.15"/>
-                </svg>
-            </div>
-            <div class="side-visual right-visual">
-                <svg viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="80" y="200" width="240" height="400" rx="20" stroke="#E9B54C" stroke-width="1.5" opacity="0.1"/>
-                    <rect x="110" y="240" width="180" height="300" rx="8" stroke="#E9B54C" stroke-width="1" opacity="0.08"/>
-                    <path d="M150 280 L250 280 M150 310 L250 310 M150 340 L220 340 M150 370 L200 370" stroke="#E9B54C" stroke-width="2" stroke-linecap="round" opacity="0.12"/>
-                    <circle cx="200" cy="520" r="30" stroke="#E9B54C" stroke-width="2" opacity="0.15"/>
-                    <circle cx="200" cy="520" r="15" fill="#E9B54C" opacity="0.1"/>
-                    <path d="M200 460 L200 580" stroke="#E9B54C" stroke-width="2" stroke-linecap="round" opacity="0.1"/>
-                    <path d="M170 490 L230 490 M170 510 L230 510 M170 530 L230 530 M170 550 L230 550" stroke="#E9B54C" stroke-width="1.5" stroke-linecap="round" opacity="0.08"/>
-                </svg>
-            </div>
-        </div>
         <div class="container">
-<div class="hero-content">
+            <div class="hero-content">
                 <div class="hero-badge">
                     <span class="pulse-dot"></span>
-                    100% Offline — No Cloud Required
+                    100% Offline — Sin Nube
                 </div>
                 <h1 class="hero-title">
-                    Turn Your Speech<br>
-                    Into Text.
-                    <span class="gradient-text">Instantly.</span>
+                    Tu voz se convierte<br>en texto.
+                    <span class="accent-text">Al instante.</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Hikari Yaps is the fast, accurate, and free way to transcribe audio on your Mac. 
-                    Hold a key, speak naturally, release — polished text appears in any app. 
-                    No subscriptions. No API keys. Your voice never leaves your machine.
+                    Sin conexión. Sin suscripciones complicadas. Funciona en cualquier lugar de tu Mac.
                 </p>
                 <div class="hero-cta-group">
-                    <a href="#download" class="btn btn-primary">
+                    <a href="HikariYaps.zip" class="btn btn-primary" download>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                         </svg>
-                        Download for Free
+                        Comenzar Prueba Gratuita
                     </a>
-                    <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+                    <a href="#how-it-works" class="btn btn-secondary">Ver Cómo Funciona</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-number">0</span>
-                        <span class="stat-label">API Calls</span>
+                        <span class="stat-label">Llamadas API</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number">0ms</span>
-                        <span class="stat-label">Cloud Latency</span>
+                        <span class="stat-label">Latencia</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number">100%</span>
-                        <span class="stat-label">Private</span>
+                        <span class="stat-label">Privado</span>
                     </div>
                 </div>
             </div>
-<div class="hero-visual">
-                <div class="app-mockup">
-                    <div class="mockup-header">
-                        <div class="mockup-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+            <div class="hero-visual">
+                <!-- MacBook Mockup -->
+                <div class="macbook-mockup">
+                    <div class="macbook-frame">
+                        <div class="macbook-screen">
+                            <div class="screen-header">
+                                <div class="screen-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <span class="screen-title">iVoz</span>
+                            </div>
+                            <div class="screen-content">
+                                <div class="demo-animation">
+                                    <div class="demo-state active" id="demoState1">
+                                        <div class="demo-dot"></div>
+                                        <div class="demo-label">Escuchando...</div>
+                                    </div>
+                                    <div class="demo-state" id="demoState2">
+                                        <div class="demo-waveform-mini">
+                                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                        </div>
+                                        <div class="demo-label">Transcribiendo...</div>
+                                    </div>
+                                    <div class="demo-state" id="demoState3">
+                                        <div class="demo-typed-text">
+                                            <span id="typedText"></span><span class="demo-cursor">|</span>
+                                        </div>
+                                        <div class="demo-label done">Listo</div>
+                                    </div>
+                                    <div class="demo-state" id="demoState4">
+                                        <div class="demo-done">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.5">
+                                                <polyline points="20 6 9 17 4 12"/>
+                                            </svg>
+                                            <span>Pegado en tu app</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="screen-meta">
+                                    <span class="screen-tag">Demo en vivo</span>
+                                    <span class="screen-accuracy">98% Precisión</span>
+                                </div>
+                            </div>
                         </div>
-                        <span class="mockup-title">Hikari Yaps</span>
+                        <div class="macbook-hinge"></div>
+                        <div class="macbook-base">
+                            <div class="macbook-notch"></div>
+                        </div>
                     </div>
-                    <div class="mockup-content">
-                        <div class="demo-animation">
-                            <div class="demo-state active" id="demoState1">
-                                <div class="demo-dot"></div>
-                                <div class="demo-label">Listening...</div>
-                            </div>
-                            <div class="demo-state" id="demoState2">
-                                <div class="demo-waveform-mini">
-                                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                                </div>
-                                <div class="demo-label">Transcribing...</div>
-                            </div>
-                            <div class="demo-state" id="demoState3">
-                                <div class="demo-typed-text">
-                                    <span id="typedText"></span><span class="demo-cursor">|</span>
-                                </div>
-                                <div class="demo-label done">Done</div>
-                            </div>
-                            <div class="demo-state" id="demoState4">
-                                <div class="demo-done">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E9B54C" stroke-width="2.5">
-                                        <polyline points="20 6 9 17 4 12"/>
-                                    </svg>
-                                    <span>Pasted into your app</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mockup-meta">
-                            <span class="mockup-tag">Live Demo</span>
-                            <span class="mockup-accuracy">98% Accuracy</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="floating-element float-1">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                        <circle cx="20" cy="20" r="18" stroke="#E9B54C" stroke-width="1.5" opacity="0.3"/>
-                        <circle cx="20" cy="20" r="10" fill="#E9B54C" opacity="0.1"/>
-                        <circle cx="20" cy="20" r="4" fill="#E9B54C"/>
-                    </svg>
-                </div>
-                <div class="floating-element float-2">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <rect x="4" y="4" width="24" height="24" rx="6" stroke="#E9B54C" stroke-width="1.5" opacity="0.3"/>
-                        <path d="M12 16h8M16 12v8" stroke="#E9B54C" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof -->
-    <section class="social-proof">
-        <div class="container">
-            <p class="social-proof-text">Trusted by creators, developers, and professionals who value their privacy</p>
-            <div class="social-proof-logos">
-                <div class="logo-placeholder">Notion</div>
-                <div class="logo-placeholder">Figma</div>
-                <div class="logo-placeholder">Linear</div>
-                <div class="logo-placeholder">Vercel</div>
-                <div class="logo-placeholder">Arc</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
+    <!-- Features / Target Audiences -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Features</span>
-                <h2 class="section-title">Everything You Need.<br>Nothing You Don't.</h2>
-                <p class="section-subtitle">Built for speed, privacy, and zero friction. Every feature serves one purpose: getting your words onto the screen.</p>
+                <span class="section-tag">Características</span>
+                <h2 class="section-title">Diseñado para ti.<br>Para tu forma de trabajar.</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
-                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                            <line x1="12" y1="19" x2="12" y2="23"/>
-                            <line x1="8" y1="23" x2="16" y2="23"/>
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
                         </svg>
                     </div>
-                    <h3>Works in Every App</h3>
-                    <p>ChatGPT, Slack, Notion, VS Code, browsers, email — wherever you can type, Hikari Yaps can paste. No integrations needed.</p>
+                    <h3>Estudiantes</h3>
+                    <p>Ensayos, apuntes, investigación. Escribe 5x más rápido que tipeando.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <h3>Profesionales</h3>
+                    <p>Emails, Slack, documentos, reuniones. Mantente productivo sin parar de escribir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </div>
+                    <h3>Desarrolladores</h3>
+                    <p>Comentarios de código, documentación. Dictado limpio, sin "uh" ni "um".</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -209,49 +175,30 @@
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         </svg>
                     </div>
-                    <h3>100% Offline & Private</h3>
-                    <p>Your voice never leaves your Mac. All AI runs locally on the Neural Engine and GPU. No cloud, no accounts, no tracking.</p>
+                    <h3>Abogados</h3>
+                    <p>Apuntes de casos, transcripciones, escrituras. Precisión y privacidad total.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 20h9"/>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        </svg>
+                    </div>
+                    <h3>Escritores</h3>
+                    <p>Borradores de libros, ideas de historias. Flujo creativo sin interrupciones.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10"/>
-                            <path d="m9 12 2 2 4-4"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
                         </svg>
                     </div>
-                    <h3>Smart Cleanup</h3>
-                    <p>A local AI model strips "ums" and "uhs", fixes grammar, and polishes your text — all in under a second. Choose from Message, Professional, Concise, or Code tone.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <path d="M8 13h2M8 17h2M12 13h4M12 17h4"/>
-                        </svg>
-                    </div>
-                    <h3>Vocabulary & Snippets</h3>
-                    <p>Teach Hikari Yaps your jargon, names, and custom shortcuts. Say "my email" and your full address appears. Say "sig" and your signature drops in.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
-                            <path d="M12 7v5l3 3"/>
-                        </svg>
-                    </div>
-                    <h3>Command Mode</h3>
-                    <p>Say "new line" or "new paragraph" to insert breaks. The app understands spoken formatting commands and structures your text automatically.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                            <path d="M3 9h18M9 21V9"/>
-                        </svg>
-                    </div>
-                    <h3>History & Export</h3>
-                    <p>Every transcription is saved locally with word counts and session stats. Search, copy, or export your history as text or JSON anytime.</p>
+                    <h3>Y más profesionales</h3>
+                    <p>Todo el que quiere trabajar más rápido, con mayor precisión y sin fricciones.</p>
                 </div>
             </div>
         </div>
@@ -261,15 +208,15 @@
     <section class="how-it-works" id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">How It Works</span>
-                <h2 class="section-title">Three Steps. Zero Friction.</h2>
+                <span class="section-tag">Cómo Funciona</span>
+                <h2 class="section-title">Tres pasos. Cero complicaciones.</h2>
             </div>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">01</div>
                     <div class="step-content">
-                        <h3>Hold Your Hotkey</h3>
-                        <p>Default is Ctrl. Hold it down while you speak. A tiny red dot and waveform bars appear at the bottom of your screen so you know it's listening.</p>
+                        <h3>Presiona</h3>
+                        <p>Mantén presionada tu tecla de acceso directo (por defecto: Ctrl). Un punto rojo y barras de onda aparecen en la parte inferior de tu pantalla.</p>
                     </div>
                     <div class="step-visual">
                         <div class="step-mockup step-mockup-listening">
@@ -283,122 +230,203 @@
                 <div class="step">
                     <div class="step-number">02</div>
                     <div class="step-content">
-                        <h3>Talk Naturally</h3>
-                        <p>Speak at your normal pace. The Neural Engine processes your voice in real time. Say "new line" for line breaks, "new paragraph" for paragraphs.</p>
+                        <h3>Habla</h3>
+                        <p>Habla a tu ritmo normal. El Motor Neural procesa tu voz en tiempo real. Di "nueva línea" o "nuevo párrafo" para formatear.</p>
                     </div>
                     <div class="step-visual">
                         <div class="step-mockup step-mockup-talking">
-                            <div class="transcription-line" style="--delay: 0s">Hey team, so regarding the</div>
-                            <div class="transcription-line" style="--delay: 0.3s">Q3 roadmap, I think we should</div>
-                            <div class="transcription-line" style="--delay: 0.6s">prioritize the API refactor...</div>
+                            <div class="transcription-line" style="--delay: 0s">Hola equipo, respecto a la</div>
+                            <div class="transcription-line" style="--delay: 0.3s">hoja de ruta del Q3, creo que</div>
+                            <div class="transcription-line" style="--delay: 0.6s">deberíamos priorizar...</div>
                         </div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">03</div>
                     <div class="step-content">
-                        <h3>Release & Watch It Type</h3>
-                        <p>Let go of the key. The text appears instantly in whatever field you were focused on — ChatGPT, Slack, a code editor, anywhere. A quick gold checkmark confirms it's done.</p>
+                        <h3>Listo</h3>
+                        <p>Suelta la tecla. El texto aparece al instante en cualquier campo — ChatGPT, Slack, un editor de código, donde sea. Una marca dorada confirma que está listo.</p>
                     </div>
                     <div class="step-visual">
                         <div class="step-mockup step-mockup-done">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9B54C" stroke-width="2.5">
                                 <polyline points="20 6 9 17 4 12"/>
                             </svg>
-                            <span>Done</span>
+                            <span>Listo</span>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="how-it-works-points">
+                <div class="point">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span><strong>Funciona offline</strong> — tu voz nunca sale de tu Mac</span>
+                </div>
+                <div class="point">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span><strong>Sin cloud.</strong> Sin datos en servidores extraños.</span>
+                </div>
+                <div class="point">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span><strong>Privacidad real.</strong> Velocidad real.</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Section -->
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Precios</span>
+                <h2 class="section-title">Comienza Gratis.<br>Actualiza cuando lo necesites.</h2>
+                <p class="section-subtitle">$4.99 USD al mes — Menos que una canción en Spotify.</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card pricing-card-free">
+                    <div class="pricing-card-header">
+                        <span class="pricing-badge">Prueba Gratuita</span>
+                        <h3>Gratis</h3>
+                        <p class="pricing-desc">7 días <strong>o</strong> 5,000 palabras<br>(lo que llegue primero)</p>
+                    </div>
+                    <div class="pricing-progress">
+                        <div class="progress-header">
+                            <span class="progress-label">Uso actual</span>
+                            <span class="progress-value">3,240 / 5,000 palabras</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 64.8%"></div>
+                        </div>
+                        <div class="progress-meta">
+                            <span>4 días restantes</span>
+                            <span>64.8%</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Modelo básico</li>
+                        <li><span class="check">✓</span> 5,000 palabras durante prueba</li>
+                        <li><span class="cross">—</span> <span class="strikethrough">Sin limpieza de IA</span></li>
+                        <li><span class="cross">—</span> <span class="strikethrough">Sin exportación</span></li>
+                        <li><span class="cross">—</span> <span class="strikethrough">Máximo 3 fragmentos</span></li>
+                        <li><span class="check">✓</span> Solo tono "Mensaje"</li>
+                    </ul>
+                    <p class="pricing-note">Después de la prueba: <strong>2,000 palabras/mes</strong></p>
+                    <a href="HikariYaps.zip" class="btn btn-outline" download>Descargar Gratis</a>
+                    <p class="pricing-footer">La barra de progreso te mantiene enfocado. Cuando alcances el límite, estarás listo para mejorar.</p>
+                </div>
+                <!-- Pro Plan -->
+                <div class="pricing-card pricing-card-pro">
+                    <div class="pricing-popular">Recomendado</div>
+                    <div class="pricing-card-header">
+                        <span class="pricing-badge pricing-badge-pro">PRO</span>
+                        <h3>$4.99<span>/mes</span></h3>
+                        <p class="pricing-desc">Todo el poder de iVoz, sin límites.</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> <strong>Palabras ilimitadas</strong></li>
+                        <li><span class="check">✓</span> Modelo mejorado</li>
+                        <li><span class="check">✓</span> Limpieza con IA</li>
+                        <li><span class="check">✓</span> Todos los tonos (4)</li>
+                        <li><span class="check">✓</span> Vocabulario ilimitado</li>
+                        <li><span class="check">✓</span> Historial completo</li>
+                        <li><span class="check">✓</span> Soporte prioritario <span class="support-tag">WhatsApp / Telegram</span></li>
+                    </ul>
+                    <a href="HikariYaps.zip" class="btn btn-primary btn-large" download>Comenzar Prueba — 7 días</a>
+                    <p class="pricing-footer">La limpieza con IA es lo que te hace ahorrar horas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
     <section class="comparison">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Why Hikari Yaps?</span>
-                <h2 class="section-title">The Others Can't Touch This.</h2>
+                <span class="section-tag">Comparación</span>
+                <h2 class="section-title">Elige lo que necesitas.</h2>
             </div>
             <div class="comparison-table">
                 <div class="comparison-header">
-                    <div class="comparison-cell comparison-feature">Feature</div>
-                    <div class="comparison-cell comparison-us">Hikari Yaps</div>
-                    <div class="comparison-cell comparison-them">Cloud STT</div>
+                    <div class="comparison-cell comparison-feature">Característica</div>
+                    <div class="comparison-cell comparison-free">Gratuito</div>
+                    <div class="comparison-cell comparison-pro">Pro</div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Offline capable</div>
-                    <div class="comparison-cell comparison-us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CC38A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="comparison-cell comparison-them"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5533F" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="comparison-cell comparison-feature">Palabras/mes</div>
+                    <div class="comparison-cell comparison-free">2,000</div>
+                    <div class="comparison-cell comparison-pro"><strong>Ilimitadas</strong></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Subscription cost</div>
-                    <div class="comparison-cell comparison-us"><span class="price-tag">Free</span></div>
-                    <div class="comparison-cell comparison-them">$10-30/mo</div>
+                    <div class="comparison-cell comparison-feature">Modelo</div>
+                    <div class="comparison-cell comparison-free">Básico</div>
+                    <div class="comparison-cell comparison-pro">Mejorado</div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Works in any app</div>
-                    <div class="comparison-cell comparison-us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CC38A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="comparison-cell comparison-them"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5533F" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="comparison-cell comparison-feature">Limpieza IA</div>
+                    <div class="comparison-cell comparison-free"><span class="no">—</span></div>
+                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Data privacy</div>
-                    <div class="comparison-cell comparison-us">100% local</div>
-                    <div class="comparison-cell comparison-them">Sent to servers</div>
+                    <div class="comparison-cell comparison-feature">Tonos</div>
+                    <div class="comparison-cell comparison-free">1 (Mensaje)</div>
+                    <div class="comparison-cell comparison-pro">4 (todos)</div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">AI grammar cleanup</div>
-                    <div class="comparison-cell comparison-us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CC38A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="comparison-cell comparison-them"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5533F" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="comparison-cell comparison-feature">Historial</div>
+                    <div class="comparison-cell comparison-free"><span class="no">—</span></div>
+                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Setup time</div>
-                    <div class="comparison-cell comparison-us">2 minutes</div>
-                    <div class="comparison-cell comparison-them">Account + config</div>
+                    <div class="comparison-cell comparison-feature">Soporte</div>
+                    <div class="comparison-cell comparison-free">Email</div>
+                    <div class="comparison-cell comparison-pro">WhatsApp / Telegram</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>¿Listo para trabajar más rápido?</h2>
+                <p>Comienza tu prueba gratuita hoy. Sin tarjeta de crédito. Sin obligaciones.</p>
+                <a href="HikariYaps.zip" class="btn btn-primary btn-large" download>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                    </svg>
+                    Comenzar Prueba Gratuita — 7 días sin pagar
+                </a>
+                <span class="cta-subtext">Sin tarjeta de crédito. Sin obligaciones.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Loved by Users</span>
-                <h2 class="section-title">Don't Take Our Word For It.</h2>
+                <span class="section-tag">Contacto</span>
+                <h2 class="section-title">¿Preguntas?</h2>
+                <p class="section-subtitle">Estamos aquí para ayudarte.</p>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"I was paying $20/month for a cloud dictation service that only worked in half my apps. Hikari Yaps works everywhere, costs nothing, and I don't have to worry about my voice data being stored on some server. Game changer."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">JD</div>
-                        <div class="testimonial-info">
-                            <span class="testimonial-name">James D.</span>
-                            <span class="testimonial-role">Product Manager, Tech Startup</span>
-                        </div>
+            <div class="contact-card">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
                     </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"The Smart Cleanup feature is insane. I ramble when I talk — 'ums', 'likes', tangents. Hikari Yaps somehow turns my verbal diarrhea into clean, professional prose. It's like having an editor living in my Mac."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">SM</div>
-                        <div class="testimonial-info">
-                            <span class="testimonial-name">Sarah M.</span>
-                            <span class="testimonial-role">Content Creator, YouTube</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"As a developer, I dictate code comments and documentation. The Code tone mode is perfect — it doesn't add punctuation that breaks my syntax. And it works in VS Code, Terminal, browser dev tools, literally everywhere."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">AK</div>
-                        <div class="testimonial-info">
-                            <span class="testimonial-name">Alex K.</span>
-                            <span class="testimonial-role">Software Engineer</span>
-                        </div>
+                    <div class="contact-info">
+                        <span class="contact-label">Teléfono / WhatsApp</span>
+                        <a href="tel:351-212-260" class="contact-value">351-212-260</a>
                     </div>
                 </div>
             </div>
@@ -409,90 +437,63 @@
     <section class="faq" id="faq">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">FAQ</span>
-                <h2 class="section-title">Questions? Answered.</h2>
+                <span class="section-tag">Preguntas Frecuentes</span>
+                <h2 class="section-title">¿Tienes dudas? Te las resolvemos.</h2>
             </div>
             <div class="faq-list">
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>Is it really free?</span>
+                        <span>¿Es realmente gratis?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes. Hikari Yaps is free to download and use. All AI models are downloaded once on first launch and run locally forever. No subscriptions, no API keys, no hidden costs. We believe powerful tools should be accessible to everyone.</p>
+                        <p>Sí. iVoz es gratis para descargar y usar. Todos los modelos de IA se descargan una sola vez al iniciar y funcionan localmente para siempre. Sin suscripciones ocultas, sin claves API. Puedes usar la versión gratuita con 2,000 palabras al mes. Si necesitas más, Pro cuesta solo $4.99/mes.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>What Mac do I need?</span>
+                        <span>¿Qué Mac necesito?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Any Apple Silicon Mac (M1, M2, M3, or M4) running macOS 14 (Sonoma) or later. The app is optimized for the Neural Engine and GPU, so it runs fast and efficiently on all Apple Silicon chips.</p>
+                        <p>Cualquier Mac con chip Apple Silicon (M1, M2, M3 o M4) y macOS 14 (Sonoma) o posterior. La app está optimizada para el Motor Neural y la GPU, por lo que funciona rápido y eficiente en todos los chips Apple Silicon.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>Does it work with my language?</span>
+                        <span>¿Funciona con mi idioma?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Hikari Yaps supports English, Spanish, Portuguese, French, German, Italian, Japanese, Korean, and Chinese. You can set your language in the app settings, or leave it on Auto-detect. The Smart Cleanup feature works best with English.</p>
+                        <p>iVoz soporta español, inglés, portugués, francés, alemán, italiano, japonés, coreano y chino. Puedes configurar tu idioma en los ajustes de la app o dejarlo en detección automática. La limpieza con IA funciona mejor en español e inglés.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>How much storage does it use?</span>
+                        <span>¿Cuánto espacio usa?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>The app itself is ~34 MB. Models are downloaded on first launch: the speech model is ~145 MB, and the optional AI cleanup model is ~1 GB. Total: about 1.2 GB. All models are stored locally and never updated unless you choose to.</p>
+                        <p>La app ocupa ~34 MB. Los modelos se descargan al iniciar por primera vez: el modelo de voz es ~145 MB y el modelo opcional de limpieza IA es ~1 GB. Total: aproximadamente 1.2 GB. Todo se almacena localmente y nunca se actualiza a menos que tú elijas hacerlo.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>Is my data really private?</span>
+                        <span>¿Mis datos son realmente privados?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Absolutely. Your audio is processed entirely on your Mac using the Neural Engine and GPU. Nothing is sent to any server. Your transcription history is stored locally in ~/Library/Application Support/HikariYaps/. We don't collect telemetry, don't require an account, and don't track anything.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download CTA -->
-    <section class="download" id="download">
-        <div class="container">
-            <div class="download-card">
-                <div class="download-content">
-                    <h2 class="download-title">Ready to Stop Typing?</h2>
-                    <p class="download-subtitle">Download Hikari Yaps for free. Set it up in 2 minutes. Start dictating in any app on your Mac.</p>
-                    <a href="HikariYaps.zip" class="btn btn-primary btn-large" download>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
-                        Download for macOS
-                    </a>
-                    <div class="download-meta">
-                        <span>Free · macOS 14+ · Apple Silicon</span>
-                        <span>~1.2 GB download</span>
-                    </div>
-                </div>
-                <div class="download-visual">
-                    <div class="download-waveform">
-                        <canvas id="downloadWaveform"></canvas>
+                        <p>Absolutamente. Tu audio se procesa completamente en tu Mac usando el Motor Neural y la GPU. Nada se envía a ningún servidor. Tu historial de transcripciones se guarda localmente en ~/Library/Application Support/HikariYaps/. No recopilamos telemetría, no requerimos cuenta y no rastreamos nada.</p>
                     </div>
                 </div>
             </div>
@@ -506,32 +507,34 @@
                 <div class="footer-brand">
                     <a href="#" class="logo">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                            <rect width="28" height="28" rx="7" fill="#1C1915"/>
-                            <path d="M8 14c0-3 2-5 5-5s5 2 5 5-2 5-5 5" stroke="#E9B54C" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="13" cy="14" r="1.5" fill="#E9B54C"/>
-                            <path d="M18 11v6M20 13v2M16 12v4" stroke="#E9B54C" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                            <rect width="28" height="28" rx="8" fill="#0071e3"/>
+                            <path d="M8 14c0-3 2-5 5-5s5 2 5 5-2 5-5 5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="13" cy="14" r="1.5" fill="white"/>
+                            <path d="M18 11v6M20 13v2M16 12v4" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
                         </svg>
-                        <span>Hikari Yaps</span>
+                        <span>iVoz</span>
                     </a>
-                    <p class="footer-tagline">Local speech-to-text for macOS.<br>Built with love, caffeine, and the Neural Engine.</p>
+                    <p class="footer-tagline">Dictado por voz para macOS.<br>Construido con amor, café y el Motor Neural.</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-col">
-                        <h4>Product</h4>
-                        <a href="#features">Features</a>
-                        <a href="#how-it-works">How It Works</a>
-                        <a href="#download">Download</a>
+                        <h4>Producto</h4>
+                        <a href="#features">Características</a>
+                        <a href="#how-it-works">Cómo Funciona</a>
+                        <a href="#pricing">Precios</a>
+                        <a href="HikariYaps.zip" download>Descargar</a>
                     </div>
                     <div class="footer-col">
-                        <h4>Support</h4>
-                        <a href="#faq">FAQ</a>
-                        <a href="#">Privacy</a>
-                        <a href="#">Contact</a>
+                        <h4>Soporte</h4>
+                        <a href="#faq">Preguntas</a>
+                        <a href="#contact">Contacto</a>
+                        <a href="tel:351-212-260">351-212-260</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 Hikari Yaps. Free Palestine. 🇵🇸</p>
+                <p>Gracias por usar iVoz.</p>
+                <p class="footer-contact">Contacto: 351-212-260</p>
             </div>
         </div>
     </footer>
