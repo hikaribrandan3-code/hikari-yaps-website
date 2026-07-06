@@ -336,7 +336,7 @@ body {
 
 .macbook-mockup {
     width: 100%;
-    max-width: 520px;
+    max-width: 720px;
     animation: mockupFloat 6s ease-in-out infinite;
 }
 
@@ -1480,4 +1480,38 @@ body {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Simplified Features */
+.features-grid-simple {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-card-large {
+    padding: 48px 36px;
+    text-align: center;
+}
+
+.feature-card-large .feature-icon-large {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+}
+
+.feature-card-large h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.feature-card-large p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .features-grid-simple {
+        grid-template-columns: 1fr;
+    }
 }
