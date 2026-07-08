@@ -813,6 +813,85 @@ body {
     align-items: stretch;
 }
 
+.pricing-grid-three {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+}
+
+/* Price Increase Banner */
+.price-increase-banner {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.banner-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+}
+
+.download-progress {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.progress-bar-thin {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-fill-thin {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981 0%, #34c759 100%);
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+/* Team Pricing Card */
+.pricing-card-team {
+    border: 2px solid #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+}
+
+.pricing-badge-team {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+/* Price Notes */
+.price-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.price-increase-warning {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 20px 0;
+}
+
+.price-increase-warning p {
+    color: #dc2626;
+    font-weight: 600;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
 .pricing-card {
     background: var(--bg-card);
     border: 1px solid var(--border);

@@ -404,61 +404,77 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Precios</span>
-                <h2 class="section-title">Comienza Gratis.<br>Actualiza cuando lo necesites.</h2>
-                <p class="section-subtitle">$4.99 USD al mes — Menos que una canción en Spotify.</p>
+                <h2 class="section-title">Una sola compra. Para siempre.</h2>
+                <p class="section-subtitle">Sin suscripciones mensuales. Sin compromisos.</p>
             </div>
-            <div class="pricing-grid">
+
+            <!-- Price Increase Counter -->
+            <div class="price-increase-banner">
+                <p class="banner-text">⚡ <strong>Precio actual: $19.99</strong> → Sube a <strong>$29.99</strong> en <span id="download-count">142</span> descargas</p>
+                <div class="download-progress">
+                    <div class="progress-bar-thin">
+                        <div class="progress-fill-thin" id="progress-fill" style="width: 71%"></div>
+                    </div>
+                    <p class="progress-text"><span id="milestone-percent">71%</span> hacia el próximo aumento</p>
+                </div>
+            </div>
+
+            <div class="pricing-grid pricing-grid-three">
                 <!-- Free Plan -->
                 <div class="pricing-card pricing-card-free">
                     <div class="pricing-card-header">
-                        <span class="pricing-badge">Prueba Gratuita</span>
                         <h3>Gratis</h3>
-                        <p class="pricing-desc">7 días <strong>o</strong> 5,000 palabras<br>(lo que llegue primero)</p>
-                    </div>
-                    <div class="pricing-progress">
-                        <div class="progress-header">
-                            <span class="progress-label">Uso actual</span>
-                            <span class="progress-value">3,240 / 5,000 palabras</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 64.8%"></div>
-                        </div>
-                        <div class="progress-meta">
-                            <span>4 días restantes</span>
-                            <span>64.8%</span>
-                        </div>
+                        <p class="pricing-desc">2,000 palabras/mes<br><strong>Para siempre</strong></p>
                     </div>
                     <ul class="pricing-features">
-                        <li><span class="check">✓</span> Modelo básico</li>
-                        <li><span class="check">✓</span> 5,000 palabras durante prueba</li>
-                        <li><span class="cross">—</span> <span class="strikethrough">Sin limpieza de IA</span></li>
-                        <li><span class="cross">—</span> <span class="strikethrough">Sin exportación</span></li>
-                        <li><span class="cross">—</span> <span class="strikethrough">Máximo 3 fragmentos</span></li>
-                        <li><span class="check">✓</span> Solo tono "Mensaje"</li>
+                        <li><span class="check">✓</span> 2,000 palabras cada mes</li>
+                        <li><span class="check">✓</span> Funciona 100% offline</li>
+                        <li><span class="check">✓</span> Sin nube, sin suscripción</li>
+                        <li><span class="cross">—</span> <span class="strikethrough">Limpieza con IA</span></li>
+                        <li><span class="cross">—</span> <span class="strikethrough">Todos los tonos</span></li>
                     </ul>
-                    <p class="pricing-note">Después de la prueba: <strong>2,000 palabras/mes</strong></p>
                     <a href="HikariYaps.zip" class="btn btn-outline" download>Descargar Gratis</a>
-                    <p class="pricing-footer">La barra de progreso te mantiene enfocado. Cuando alcances el límite, estarás listo para mejorar.</p>
                 </div>
+
                 <!-- Pro Plan -->
                 <div class="pricing-card pricing-card-pro">
-                    <div class="pricing-popular">Recomendado</div>
+                    <div class="pricing-popular">Más Popular</div>
                     <div class="pricing-card-header">
                         <span class="pricing-badge pricing-badge-pro">PRO</span>
-                        <h3>$4.99<span>/mes</span></h3>
-                        <p class="pricing-desc">Todo el poder de iVoz, sin límites.</p>
+                        <h3>$19.99<span class="price-note"> de una sola vez</span></h3>
+                        <p class="pricing-desc">Unlimited. Para siempre.</p>
+                    </div>
+                    <div class="price-increase-warning">
+                        <p>⚠️ Precio sube a $29.99 pronto</p>
                     </div>
                     <ul class="pricing-features">
                         <li><span class="check">✓</span> <strong>Palabras ilimitadas</strong></li>
-                        <li><span class="check">✓</span> Modelo mejorado</li>
                         <li><span class="check">✓</span> Limpieza con IA</li>
                         <li><span class="check">✓</span> Todos los tonos (4)</li>
                         <li><span class="check">✓</span> Vocabulario ilimitado</li>
                         <li><span class="check">✓</span> Historial completo</li>
-                        <li><span class="check">✓</span> Soporte prioritario <span class="support-tag">WhatsApp / Telegram</span></li>
+                        <li><span class="check">✓</span> 100% offline, sin cloud</li>
                     </ul>
-                    <a href="HikariYaps.zip" class="btn btn-primary btn-large" download>Comenzar Prueba — 7 días</a>
-                    <p class="pricing-footer">La limpieza con IA es lo que te hace ahorrar horas.</p>
+                    <button class="btn btn-primary btn-large" onclick="scrollToCheckout('pro')">Desbloquear Pro — $19.99</button>
+                    <p class="pricing-footer">Un pago. Tuyo para siempre.</p>
+                </div>
+
+                <!-- Team Plan -->
+                <div class="pricing-card pricing-card-team">
+                    <div class="pricing-card-header">
+                        <span class="pricing-badge pricing-badge-team">TEAM</span>
+                        <h3>$59.99<span class="price-note"> de una sola vez</span></h3>
+                        <p class="pricing-desc">Para 3-5 usuarios</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Todo lo de Pro</li>
+                        <li><span class="check">✓</span> 3-5 licencias (comparte)</li>
+                        <li><span class="check">✓</span> Sin límites por usuario</li>
+                        <li><span class="check">✓</span> Soporte prioritario</li>
+                        <li><span class="check">✓</span> Para freelancers y pequeños equipos</li>
+                    </ul>
+                    <button class="btn btn-primary btn-large" onclick="scrollToCheckout('team')">Desbloquear Team — $59.99</button>
+                    <p class="pricing-footer">Perfecto para agencias y equipos pequeños.</p>
                 </div>
             </div>
         </div>
@@ -474,38 +490,45 @@
             <div class="comparison-table">
                 <div class="comparison-header">
                     <div class="comparison-cell comparison-feature">Característica</div>
-                    <div class="comparison-cell comparison-free">Gratuito</div>
-                    <div class="comparison-cell comparison-pro">Pro</div>
+                    <div class="comparison-cell comparison-free">Gratis</div>
+                    <div class="comparison-cell comparison-pro">Pro ($19.99)</div>
+                    <div class="comparison-cell comparison-pro">Team ($59.99)</div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell comparison-feature">Palabras/mes</div>
                     <div class="comparison-cell comparison-free">2,000</div>
                     <div class="comparison-cell comparison-pro"><strong>Ilimitadas</strong></div>
-                </div>
-                <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Modelo</div>
-                    <div class="comparison-cell comparison-free">Básico</div>
-                    <div class="comparison-cell comparison-pro">Mejorado</div>
+                    <div class="comparison-cell comparison-pro"><strong>Ilimitadas</strong></div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell comparison-feature">Limpieza IA</div>
                     <div class="comparison-cell comparison-free"><span class="no">—</span></div>
                     <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
+                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Tonos</div>
-                    <div class="comparison-cell comparison-free">1 (Mensaje)</div>
-                    <div class="comparison-cell comparison-pro">4 (todos)</div>
+                    <div class="comparison-cell comparison-feature">Todos los tonos</div>
+                    <div class="comparison-cell comparison-free"><span class="no">—</span></div>
+                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
+                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell comparison-feature">Historial</div>
                     <div class="comparison-cell comparison-free"><span class="no">—</span></div>
                     <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
+                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Soporte</div>
-                    <div class="comparison-cell comparison-free">Email</div>
-                    <div class="comparison-cell comparison-pro">WhatsApp / Telegram</div>
+                    <div class="comparison-cell comparison-feature">Pago</div>
+                    <div class="comparison-cell comparison-free">Gratis forever</div>
+                    <div class="comparison-cell comparison-pro">Una sola vez</div>
+                    <div class="comparison-cell comparison-pro">Una sola vez</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell comparison-feature">Usuarios</div>
+                    <div class="comparison-cell comparison-free">1</div>
+                    <div class="comparison-cell comparison-pro">1</div>
+                    <div class="comparison-cell comparison-pro">3-5</div>
                 </div>
             </div>
         </div>
