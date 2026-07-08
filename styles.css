@@ -1092,7 +1092,7 @@ body {
 
 /* ===== COMPARISON ===== */
 .comparison {
-    padding: 100px 0;
+    padding: 80px 0;
     background: var(--bg-primary);
 }
 
@@ -1133,7 +1133,7 @@ body {
 }
 
 .comparison-cell {
-    padding: 18px 24px;
+    padding: 14px 20px;
     display: flex;
     align-items: center;
     font-size: 0.9rem;
