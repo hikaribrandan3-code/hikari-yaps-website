@@ -1704,3 +1704,10 @@ body {
 .footer {
     padding: 60px 0 40px;
 }
+
+.footer-location {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-top: 8px;
+}
