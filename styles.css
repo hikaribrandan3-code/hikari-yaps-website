@@ -249,17 +249,25 @@ body {
 }
 
 .btn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 14px 28px;
-    border-radius: 100px;
+    border-radius: 12px;
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
     transition: var(--transition);
     cursor: pointer;
     border: none;
+    text-align: center;
+}
+
+.pricing-card .btn {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 12px;
 }
 
 .btn-primary {
@@ -895,7 +903,7 @@ body {
 .pricing-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
+    border-radius: 20px;
     padding: 40px 32px;
     transition: var(--transition);
     position: relative;
