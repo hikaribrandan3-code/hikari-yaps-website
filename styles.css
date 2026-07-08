@@ -1519,3 +1519,274 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== APP CAROUSEL ===== */
+.app-carousel {
+    padding: 60px 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+.app-carousel-label {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 32px;
+}
+
+.carousel-track {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-content {
+    display: flex;
+    gap: 24px;
+    animation: scrollSnake 20s linear infinite;
+    padding: 16px 0;
+}
+
+.app-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 80px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.app-icon-item:hover {
+    transform: scale(1.1);
+}
+
+.app-icon {
+    font-size: 3rem;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-light);
+    border-radius: 16px;
+    transition: var(--transition);
+}
+
+.app-icon-item:hover .app-icon {
+    background: rgba(0, 113, 227, 0.15);
+    transform: scale(1.05);
+}
+
+.app-icon-item span {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+@keyframes scrollSnake {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===== TESTIMONIALS CAROUSEL ===== */
+.testimonials {
+    padding: 60px 0;
+    background: var(--bg-primary);
+}
+
+.testimonials-carousel {
+    position: relative;
+    min-height: 200px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    padding: 40px;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.6s ease-in-out;
+    text-align: center;
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    position: relative;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.testimonial-location {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.testimonials-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dot.active {
+    background: var(--accent);
+}
+
+.dot:hover {
+    background: var(--text-secondary);
+}
+
+/* ===== ISUITE SECTION ===== */
+.isuite {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.isuite-content {
+    text-align: center;
+}
+
+.isuite-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.isuite-tagline {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.isuite-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.isuite-item {
+    padding: 32px 24px;
+    border-radius: 16px;
+    border: 2px solid var(--border);
+    transition: var(--transition);
+    background: var(--bg-secondary);
+}
+
+.isuite-item.available {
+    border-color: var(--success);
+    background: rgba(52, 199, 89, 0.03);
+}
+
+.isuite-item.available:hover {
+    border-color: var(--success);
+    box-shadow: 0 8px 32px rgba(52, 199, 89, 0.1);
+}
+
+.isuite-item.coming {
+    border-color: var(--border);
+    opacity: 0.7;
+}
+
+.isuite-item.coming:hover {
+    opacity: 1;
+    border-color: var(--text-secondary);
+}
+
+.isuite-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.isuite-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.isuite-status {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.isuite-item.available .isuite-status {
+    color: var(--success);
+    font-weight: 600;
+}
+
+/* ===== TIGHTER PADDING OVERRIDES ===== */
+.hero {
+    padding: 60px 0 40px;
+}
+
+.features {
+    padding: 80px 0;
+}
+
+.how-it-works {
+    padding: 80px 0;
+}
+
+.pricing {
+    padding: 80px 0;
+}
+
+.comparison {
+    padding: 80px 0;
+}
+
+.cta-section {
+    padding: 60px 0;
+}
+
+.contact {
+    padding: 80px 0;
+}
+
+.faq {
+    padding: 80px 0;
+}
+
+.footer {
+    padding: 60px 0 40px;
+}

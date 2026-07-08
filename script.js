@@ -209,6 +209,29 @@ if (pricingCard) {
     progressObserver.observe(pricingCard);
 }
 
+// ===== TESTIMONIALS CAROUSEL AUTO-ROTATE =====
+let currentTestimonial = 0;
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+const testimonialDots = document.querySelectorAll('.testimonials-dots .dot');
+
+function switchTestimonial(index) {
+    testimonialCards.forEach(card => card.classList.remove('active'));
+    testimonialDots.forEach(dot => dot.classList.remove('active'));
+
+    testimonialCards[index].classList.add('active');
+    testimonialDots[index].classList.add('active');
+    currentTestimonial = index;
+}
+
+function autoRotateTestimonials() {
+    currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+    switchTestimonial(currentTestimonial);
+}
+
+if (testimonialCards.length > 0) {
+    setInterval(autoRotateTestimonials, 5000); // Change every 5 seconds
+}
+
 // ===== INITIALIZE ON DOM READY =====
 document.addEventListener('DOMContentLoaded', () => {
     initDemoAnimation();
