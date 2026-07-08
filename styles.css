@@ -1534,65 +1534,70 @@ body {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
 }
 
 .carousel-track {
     overflow: hidden;
     position: relative;
+    width: 100%;
 }
 
 .carousel-content {
     display: flex;
-    gap: 24px;
-    animation: scrollSnake 20s linear infinite;
-    padding: 16px 0;
+    gap: 32px;
+    animation: scrollConveyor 40s linear infinite;
+    padding: 20px 0;
+    will-change: transform;
 }
 
 .app-icon-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    min-width: 80px;
+    gap: 12px;
+    min-width: 100px;
     flex-shrink: 0;
     cursor: pointer;
     transition: var(--transition);
 }
 
 .app-icon-item:hover {
-    transform: scale(1.1);
+    transform: translateY(-8px);
 }
 
 .app-icon {
-    font-size: 3rem;
-    width: 80px;
-    height: 80px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--accent-light);
-    border-radius: 16px;
+    border-radius: 20px;
     transition: var(--transition);
+    color: white;
 }
 
 .app-icon-item:hover .app-icon {
-    background: rgba(0, 113, 227, 0.15);
-    transform: scale(1.05);
+    transform: scale(1.08);
+    box-shadow: 0 12px 32px rgba(0, 113, 227, 0.2);
 }
 
 .app-icon-item span {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-primary);
-    font-weight: 500;
+    font-weight: 600;
+    text-align: center;
 }
 
-@keyframes scrollSnake {
+@keyframes scrollConveyor {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(calc(-100px * 12 - 32px * 12));
     }
 }
 
