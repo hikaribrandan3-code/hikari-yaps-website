@@ -1,3 +1,60 @@
+// ===== LANGUAGE SYSTEM =====
+const translations = {
+  es: {
+    'nav.features': 'Características',
+    'nav.how-it-works': 'Cómo Funciona',
+    'nav.pricing': 'Precios',
+    'nav.faq': 'Preguntas',
+    'nav.download': 'Descargar',
+    'hero.badge': '100% Offline — Sin Nube',
+    'hero.title': 'Escribe más rápido.<br>Sin tipear.<span class="accent-text">Al instante.</span>',
+    'hero.subtitle': 'iVoz convierte tu voz en texto en cualquier app de tu Mac. Ahorra horas cada semana. 100% offline, 100% privado.',
+    'hero.cta-primary': 'Comenzar Prueba Gratuita',
+    'hero.cta-secondary': 'Ver Cómo Funciona',
+  },
+  en: {
+    'nav.features': 'Features',
+    'nav.how-it-works': 'How It Works',
+    'nav.pricing': 'Pricing',
+    'nav.faq': 'FAQ',
+    'nav.download': 'Download',
+    'hero.badge': '100% Offline — No Cloud',
+    'hero.title': 'Write faster.<br>No typing.<span class="accent-text">Instantly.</span>',
+    'hero.subtitle': 'iVoz converts your voice to text in any Mac app. Save hours every week. 100% offline, 100% private.',
+    'hero.cta-primary': 'Start Free Trial',
+    'hero.cta-secondary': 'See How It Works',
+  }
+};
+
+let currentLang = localStorage.getItem('iVozLang') || 'es';
+
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('iVozLang', lang);
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (translations[lang][key]) {
+      if (key === 'hero.title') {
+        el.innerHTML = translations[lang][key];
+      } else {
+        el.textContent = translations[lang][key];
+      }
+    }
+  });
+
+  // Update language buttons
+  document.getElementById('langES').classList.toggle('active', lang === 'es');
+  document.getElementById('langEN').classList.toggle('active', lang === 'en');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('langES').addEventListener('click', () => setLanguage('es'));
+  document.getElementById('langEN').addEventListener('click', () => setLanguage('en'));
+  setLanguage(currentLang);
+});
+
 // ===== NAVBAR SCROLL =====
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {

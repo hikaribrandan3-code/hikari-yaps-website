@@ -147,6 +147,38 @@ body {
 .nav-cta:hover {
     background: var(--accent-hover) !important;
     transform: translateY(-1px);
+}
+
+.language-toggle {
+    display: flex;
+    gap: 4px;
+    margin-left: 16px;
+    padding-left: 16px;
+    border-left: 1px solid var(--border);
+}
+
+.lang-btn {
+    background: none;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-secondary);
+}
+
+.lang-btn:hover {
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+}
+
+.lang-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
     box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
 }
 
