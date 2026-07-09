@@ -261,17 +261,7 @@ function initPayPal() {
                 });
             },
             onApprove: (data, actions) => {
-                return actions.order.capture().then(details => {
-                    // Generate activation code
-                    const code = generateActivationCode();
-                    const email = details.payer.email_address;
-
-                    // Save to Supabase
-                    saveActivationCode(code, email, details.id);
-
-                    // Redirect to success page
-                    showSuccessPage(code, email);
-                });
+                return verifyPaymentAndGenerateCode(data.orderID, actions);
             },
             onError: (err) => {
                 console.error('PayPal Error:', err);
@@ -281,39 +271,35 @@ function initPayPal() {
     }
 }
 
-function generateActivationCode() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let code = '';
-    for (let i = 0; i < 7; i++) {
-        code += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return code;
-}
-
-async function saveActivationCode(code, email, paypalOrderId) {
-    const supabaseUrl = 'https://nfwcquwoyaeqgekncmyc.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5md2NxdXdveWFlcWdla25jbXljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4ODYwNDIsImV4cCI6MjA5NzQ2MjA0Mn0._nY420m1fbyfK1hlF-BBYQ2dMjHcvtJjHG2w00NnCLM';
-
+async function verifyPaymentAndGenerateCode(orderId, actions) {
     try {
-        const response = await fetch(`${supabaseUrl}/rest/v1/activation_codes`, {
+        // Get payer email from PayPal order details
+        const orderDetails = await actions.order.get();
+        const email = orderDetails.payer.email_address;
+
+        // Call Supabase Edge Function to verify payment and generate code
+        const response = await fetch('https://nfwcquwoyaeqgekncmyc.supabase.co/functions/v1/handle-paypal-payment', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${supabaseKey}`,
-                'Prefer': 'return=minimal'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                code: code,
-                email: email,
-                paypal_order_id: paypalOrderId,
-                used: false,
-                created_at: new Date().toISOString()
+                orderId: orderId,
+                email: email
             })
         });
 
-        console.log('Code saved:', response.status);
+        const result = await response.json();
+
+        if (result.success) {
+            showSuccessPage(result.code, result.email);
+        } else {
+            console.error('Payment verification failed:', result.error);
+            alert('Payment verified but code generation failed. Please contact support.');
+        }
     } catch (error) {
-        console.error('Error saving code:', error);
+        console.error('Error:', error);
+        alert('Payment processing error. Please try again or contact support.');
     }
 }
 
