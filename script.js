@@ -11,6 +11,59 @@ const translations = {
     'hero.subtitle': 'iVoz convierte tu voz en texto en cualquier app de tu Mac. Ahorra horas cada semana. 100% offline, 100% privado.',
     'hero.cta-primary': 'Comenzar Prueba Gratuita',
     'hero.cta-secondary': 'Ver Cómo Funciona',
+    'hero.stat1': 'Llamadas API',
+    'hero.stat2': 'Latencia',
+    'hero.stat3': 'Privado',
+    'features.badge': 'Características',
+    'features.title': 'Ahorra horas cada semana.',
+    'features.subtitle': 'Lo esencial. Nada más.',
+    'features.feature1': 'Dicta en cualquier app',
+    'features.feature1-desc': 'WhatsApp, Slack, Notion, Google Docs, email — donde sea que escribas, iVoz pega el texto al instante. Sin integraciones, sin configuración.',
+    'features.feature2': '100% offline y privado',
+    'features.feature2-desc': 'Tu voz nunca sale de tu Mac. Todo el procesamiento se hace localmente con el Motor Neural de Apple. Sin cloud, sin cuentas, sin rastreo.',
+    'features.feature3': 'Limpieza inteligente con IA',
+    'features.feature3-desc': 'La IA elimina los "eh", "um" y arregla la gramática automáticamente. Tu dictado suena profesional sin editar. Ahorra horas de revisión.',
+    'carousel.label': 'Funciona en tus apps favoritas',
+    'howitworks.badge': 'Proceso',
+    'howitworks.title': 'Más simple que nunca',
+    'howitworks.step1': 'Presiona tu atajo',
+    'howitworks.step1-desc': 'Define un atajo de teclado personalizado (⌘ + tu tecla)',
+    'howitworks.step2': 'Dicta',
+    'howitworks.step2-desc': 'Habla de forma natural. iVoz escucha y transcribe en tiempo real.',
+    'howitworks.step3': 'Pega',
+    'howitworks.step3-desc': 'El texto se pega al instante en cualquier app. Listo para usar.',
+    'pricing.badge': 'Precios',
+    'pricing.title': 'Elige tu plan',
+    'pricing.free': 'Gratis',
+    'pricing.free-trial': '5 días gratis',
+    'pricing.free-limit': '3500 palabras/mes después',
+    'pricing.pro': 'Pro',
+    'pricing.pro-price': '$9.99 USD',
+    'pricing.pro-lifetime': 'De por vida',
+    'pricing.pro-feature': 'Acceso ilimitado',
+    'pricing.cta': 'Comprar Ahora',
+    'faq.badge': 'Preguntas Frecuentes',
+    'faq.title': 'Tu preguntas respondidas',
+    'footer.copyright': '© 2025 iVoz. Todos los derechos reservados.',
+    'checkout.title': 'Obtener iVoz Pro',
+    'checkout.step1': 'Información de contacto',
+    'checkout.name': 'Nombre',
+    'checkout.email': 'Correo Electrónico',
+    'checkout.next': 'Continuar',
+    'checkout.step2': 'Selecciona método de pago',
+    'checkout.paypal': 'PayPal',
+    'checkout.mercadopago': 'Mercado Pago',
+    'checkout.close': 'Cerrar',
+    'success.title': '✓ ¡Pago Recibido!',
+    'success.subtitle': 'Tu licencia de iVoz Pro está lista.',
+    'success.code-label': '⚠️ Tu código de activación (usa una sola vez):',
+    'success.code-warning': 'Guárdalo en un lugar seguro. Es como una API key — úsalo una sola vez para activar iVoz Pro en tu Mac.',
+    'success.step1': 'Copia el código de arriba',
+    'success.step2': 'Abre iVoz en tu Mac',
+    'success.step3': 'Ve a Configuración → Licencia',
+    'success.step4': 'Pega el código y haz clic en Activar',
+    'success.step5': '¡Listo! Acceso ilimitado de por vida',
+    'success.back': 'Volver al Inicio'
   },
   en: {
     'nav.features': 'Features',
@@ -23,6 +76,59 @@ const translations = {
     'hero.subtitle': 'iVoz converts your voice to text in any Mac app. Save hours every week. 100% offline, 100% private.',
     'hero.cta-primary': 'Start Free Trial',
     'hero.cta-secondary': 'See How It Works',
+    'hero.stat1': 'API Calls',
+    'hero.stat2': 'Latency',
+    'hero.stat3': 'Private',
+    'features.badge': 'Features',
+    'features.title': 'Save hours every week.',
+    'features.subtitle': 'The essentials. Nothing more.',
+    'features.feature1': 'Dictate in any app',
+    'features.feature1-desc': 'WhatsApp, Slack, Notion, Google Docs, email — wherever you type, iVoz pastes instantly. No integrations, no setup.',
+    'features.feature2': '100% offline and private',
+    'features.feature2-desc': 'Your voice never leaves your Mac. All processing happens locally with Apple\'s Neural Engine. No cloud, no accounts, no tracking.',
+    'features.feature3': 'Smart AI cleanup',
+    'features.feature3-desc': 'AI removes "uh", "um" and fixes grammar automatically. Your dictation sounds professional without editing. Save hours of review.',
+    'carousel.label': 'Works in your favorite apps',
+    'howitworks.badge': 'Process',
+    'howitworks.title': 'Easier than ever',
+    'howitworks.step1': 'Press your hotkey',
+    'howitworks.step1-desc': 'Set a custom keyboard shortcut (⌘ + your key)',
+    'howitworks.step2': 'Dictate',
+    'howitworks.step2-desc': 'Speak naturally. iVoz listens and transcribes in real time.',
+    'howitworks.step3': 'Paste',
+    'howitworks.step3-desc': 'Text pastes instantly into any app. Ready to use.',
+    'pricing.badge': 'Pricing',
+    'pricing.title': 'Choose your plan',
+    'pricing.free': 'Free',
+    'pricing.free-trial': '5 days free',
+    'pricing.free-limit': '3500 words/month after',
+    'pricing.pro': 'Pro',
+    'pricing.pro-price': '$9.99 USD',
+    'pricing.pro-lifetime': 'Lifetime',
+    'pricing.pro-feature': 'Unlimited access',
+    'pricing.cta': 'Buy Now',
+    'faq.badge': 'FAQ',
+    'faq.title': 'Your questions answered',
+    'footer.copyright': '© 2025 iVoz. All rights reserved.',
+    'checkout.title': 'Get iVoz Pro',
+    'checkout.step1': 'Contact Information',
+    'checkout.name': 'Name',
+    'checkout.email': 'Email',
+    'checkout.next': 'Continue',
+    'checkout.step2': 'Select payment method',
+    'checkout.paypal': 'PayPal',
+    'checkout.mercadopago': 'Mercado Pago',
+    'checkout.close': 'Close',
+    'success.title': '✓ Payment Received!',
+    'success.subtitle': 'Your iVoz Pro license is ready.',
+    'success.code-label': '⚠️ Your activation code (one-time use):',
+    'success.code-warning': 'Save it somewhere safe. It\'s like an API key — use it once to activate iVoz Pro on your Mac.',
+    'success.step1': 'Copy the code above',
+    'success.step2': 'Open iVoz on your Mac',
+    'success.step3': 'Go to Settings → License',
+    'success.step4': 'Paste the code and click Activate',
+    'success.step5': 'Done! Lifetime unlimited access',
+    'success.back': 'Back to Home'
   }
 };
 
@@ -347,6 +453,9 @@ function showSuccessPage(code, email) {
     const pricingSection = document.querySelector('.pricing');
     if (pricingSection) pricingSection.style.display = 'none';
 
+    // Get translations for current language
+    const t = translations[currentLang];
+
     // Create success modal
     const modal = document.createElement('div');
     modal.style.cssText = `
@@ -364,25 +473,25 @@ function showSuccessPage(code, email) {
 
     modal.innerHTML = `
         <div style="background: white; padding: 40px; border-radius: 20px; max-width: 500px; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.1);">
-            <h2 style="font-size: 2rem; margin-bottom: 20px; color: #34c759;">✓ ¡Pago Recibido!</h2>
-            <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">Tu licencia de iVoz Pro está lista.</p>
+            <h2 style="font-size: 2rem; margin-bottom: 20px; color: #34c759;">${t['success.title']}</h2>
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">${t['success.subtitle']}</p>
 
             <div style="background: #FFF3CD; border: 1px solid #FFC107; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
-                <p style="font-size: 0.9rem; color: #856404; margin-bottom: 10px; font-weight: 600;">⚠️ Tu código de activación (usa una sola vez):</p>
+                <p style="font-size: 0.9rem; color: #856404; margin-bottom: 10px; font-weight: 600;">${t['success.code-label']}</p>
                 <p style="font-size: 2rem; font-weight: 700; color: #0071e3; font-family: monospace; letter-spacing: 2px; margin: 0; padding: 10px; background: white; border-radius: 8px;">${code}</p>
-                <p style="font-size: 0.85rem; color: #856404; margin-top: 10px; margin-bottom: 0;">Guárdalo en un lugar seguro. Es como una API key — úsalo una sola vez para activar iVoz Pro en tu Mac.</p>
+                <p style="font-size: 0.85rem; color: #856404; margin-top: 10px; margin-bottom: 0;">${t['success.code-warning']}</p>
             </div>
 
             <ol style="text-align: left; color: #555; margin-bottom: 30px;">
-                <li style="margin-bottom: 12px;"><strong>Copia el código</strong> de arriba</li>
-                <li style="margin-bottom: 12px;">Abre <strong>iVoz</strong> en tu Mac</li>
-                <li style="margin-bottom: 12px;">Ve a <strong>Configuración → Licencia</strong></li>
-                <li style="margin-bottom: 12px;">Pega el código y haz clic en <strong>Activar</strong></li>
-                <li>¡Listo! Acceso ilimitado de por vida</li>
+                <li style="margin-bottom: 12px;"><strong>${t['success.step1']}</strong></li>
+                <li style="margin-bottom: 12px;"><strong>${t['success.step2']}</strong></li>
+                <li style="margin-bottom: 12px;"><strong>${t['success.step3']}</strong></li>
+                <li style="margin-bottom: 12px;"><strong>${t['success.step4']}</strong></li>
+                <li style="margin-bottom: 0;"><strong>${t['success.step5']}</strong></li>
             </ol>
 
             <button onclick="window.location.href='https://ivoz.vercel.app/'" style="background: #0071e3; color: white; border: none; padding: 12px 32px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">
-                Volver al Inicio
+                ${t['success.back']}
             </button>
         </div>
     `;
