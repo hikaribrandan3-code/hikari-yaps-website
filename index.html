@@ -447,10 +447,9 @@
                         <li><span class="check">✓</span> Historial completo</li>
                         <li><span class="check">✓</span> 100% offline, sin cloud</li>
                     </ul>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <div id="paypal-button-container"></div>
-                        <button class="btn btn-outline btn-large" id="mp-button" style="width: 100%;">Pagar con Mercado Pago — $14.99</button>
-                    </div>
+                    <button class="btn btn-primary btn-large" onclick="openCheckoutModal()" style="width: 100%;">
+                        Desbloquear Pro — $14.99
+                    </button>
                     <p class="pricing-footer">Un pago. Tuyo para siempre.</p>
                 </div>
             </div>
@@ -667,6 +666,89 @@
             </div>
         </div>
     </footer>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="checkout-modal" style="display: none;">
+        <div class="checkout-container">
+            <!-- Step 1: Customer Info -->
+            <div id="checkout-step-1" class="checkout-step">
+                <div class="checkout-header">
+                    <h2>Completa tu compra</h2>
+                    <p>iVoz Pro — Acceso ilimitado de por vida</p>
+                </div>
+
+                <form id="customer-form" style="margin-bottom: 30px;">
+                    <div class="form-group">
+                        <label for="customer-name">Nombre (opcional)</label>
+                        <input type="text" id="customer-name" placeholder="Tu nombre" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer-email">Email *</label>
+                        <input type="email" id="customer-email" placeholder="tu@email.com" class="form-input" required>
+                    </div>
+
+                    <div style="display: flex; gap: 12px;">
+                        <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()" style="flex: 1;">
+                            Cancelar
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="proceedToPayment()" style="flex: 1;">
+                            Continuar
+                        </button>
+                    </div>
+                </form>
+
+                <p style="font-size: 0.85rem; color: #999; text-align: center;">
+                    Tu información está segura y encriptada.
+                </p>
+            </div>
+
+            <!-- Step 2: Payment Method -->
+            <div id="checkout-step-2" class="checkout-step" style="display: none;">
+                <div class="checkout-header">
+                    <h2>Elige tu método de pago</h2>
+                    <p id="payment-email" style="color: #666; font-size: 0.95rem;"></p>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
+                    <button type="button" class="payment-method-button" onclick="selectPaymentMethod('paypal')">
+                        <div style="display: flex; align-items: center; gap: 16px; width: 100%;">
+                            <div style="width: 50px; height: 40px; background: #003087; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">
+                                P
+                            </div>
+                            <div style="flex: 1; text-align: left;">
+                                <div style="font-weight: 600; color: #1d1d1f;">PayPal</div>
+                                <div style="font-size: 0.85rem; color: #86868b;">Rápido y seguro</div>
+                            </div>
+                            <div style="font-weight: 600; color: #1d1d1f;">$14.99</div>
+                        </div>
+                    </button>
+
+                    <button type="button" class="payment-method-button" onclick="selectPaymentMethod('mercadopago')">
+                        <div style="display: flex; align-items: center; gap: 16px; width: 100%;">
+                            <div style="width: 50px; height: 40px; background: #009ee3; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">
+                                MP
+                            </div>
+                            <div style="flex: 1; text-align: left;">
+                                <div style="font-weight: 600; color: #1d1d1f;">Mercado Pago</div>
+                                <div style="font-size: 0.85rem; color: #86868b;">Tarjetas y billeteras</div>
+                            </div>
+                            <div style="font-weight: 600; color: #1d1d1f;">$14.99</div>
+                        </div>
+                    </button>
+                </div>
+
+                <div style="display: flex; gap: 12px;">
+                    <button type="button" class="btn btn-outline" onclick="backToStep1()" style="flex: 1;">
+                        Atrás
+                    </button>
+                    <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()" style="flex: 1;">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- PayPal SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=AUQnpwD7KquTmCrB4eopOKPb-qd5m_pwi8ToTts3hyllL-C4UTl1WbfYBHY_vsK5FOY-jLH6EaMA6apu&currency=USD"></script>

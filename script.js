@@ -440,3 +440,125 @@ async function verifyMercadoPagoPayment(preferenceId, email) {
         alert('Error verifying payment. Please contact support.');
     }
 }
+
+// ===== CHECKOUT MODAL =====
+function openCheckoutModal() {
+    document.getElementById('checkout-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCheckoutModal() {
+    document.getElementById('checkout-modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+    document.getElementById('checkout-step-1').style.display = 'block';
+    document.getElementById('checkout-step-2').style.display = 'none';
+    document.getElementById('customer-form').reset();
+}
+
+async function proceedToPayment() {
+    const name = document.getElementById('customer-name').value;
+    const email = document.getElementById('customer-email').value;
+
+    if (!email) {
+        alert('Por favor ingresa tu email');
+        return;
+    }
+
+    // Save customer info to Supabase
+    try {
+        const response = await fetch('https://nfwcquwoyaeqgekncmyc.supabase.co/rest/v1/customers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5md2NxdXdveWFlcWdla25jbXljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4ODYwNDIsImV4cCI6MjA5NzQ2MjA0Mn0._nY420m1fbyfK1hlF-BBYQ2dMjHcvtJjHG2w00NnCLM',
+                'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({
+                name: name || 'Usuario',
+                email: email
+            })
+        });
+
+        if (!response.ok && response.status !== 409) { // 409 = email already exists
+            console.error('Error saving customer');
+        }
+
+        // Move to payment method selection
+        document.getElementById('checkout-step-1').style.display = 'none';
+        document.getElementById('checkout-step-2').style.display = 'block';
+        document.getElementById('payment-email').textContent = email;
+        window.currentCheckoutEmail = email;
+        window.currentCheckoutName = name;
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error procesando tu información');
+    }
+}
+
+function backToStep1() {
+    document.getElementById('checkout-step-1').style.display = 'block';
+    document.getElementById('checkout-step-2').style.display = 'none';
+}
+
+function selectPaymentMethod(method) {
+    const email = window.currentCheckoutEmail;
+
+    if (method === 'paypal') {
+        closeCheckoutModal();
+        // Trigger PayPal button
+        const paypalBtn = document.querySelector('#paypal-button-container button');
+        if (paypalBtn) paypalBtn.click();
+        else initiatePayPalPayment(email);
+    } else if (method === 'mercadopago') {
+        closeCheckoutModal();
+        initiateMercadoPagoPayment(email);
+    }
+}
+
+function initiatePayPalPayment(email) {
+    // Create PayPal order and capture
+    if (typeof paypal !== 'undefined') {
+        paypal.Buttons({
+            createOrder: (data, actions) => {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: { value: '14.99' }
+                    }]
+                });
+            },
+            onApprove: (data, actions) => {
+                return verifyPaymentAndGenerateCode(data.orderID, actions);
+            },
+            onError: (err) => {
+                console.error('PayPal Error:', err);
+                alert('Payment failed. Please try again.');
+            }
+        }).render('#paypal-checkout-temp');
+    }
+}
+
+async function initiateMercadoPagoPayment(email) {
+    try {
+        const response = await fetch('https://nfwcquwoyaeqgekncmyc.supabase.co/functions/v1/handle-mercadopago-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                action: 'create',
+                email: email
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.success && result.initPoint) {
+            window.location.href = result.initPoint;
+        } else {
+            alert('Error creating payment. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error creating payment. Please try again.');
+    }
+}
