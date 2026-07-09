@@ -8,7 +8,7 @@
 
     <!-- Open Graph for Link Previews -->
     <meta property="og:title" content="iVoz — Conversión de Voz a Texto en macOS">
-    <meta property="og:description" content="4x más rápido. 100% offline. $19.99 de por vida.">
+    <meta property="og:description" content="4x más rápido. 100% offline. $14.99 de por vida (Oferta de lanzamiento).">
     <meta property="og:image" content="https://ivoz.vercel.app/images/ivozlinkimage.png">
     <meta property="og:url" content="https://ivoz.vercel.app">
     <meta property="og:type" content="website">
@@ -17,7 +17,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="iVoz — Conversión de Voz a Texto en macOS">
-    <meta name="twitter:description" content="4x más rápido. 100% offline. $19.99 de por vida.">
+    <meta name="twitter:description" content="4x más rápido. 100% offline. $14.99 de por vida (Oferta de lanzamiento)."
     <meta name="twitter:image" content="https://ivoz.vercel.app/images/ivozlinkimage.png">
 
     <link rel="stylesheet" href="styles.css">
@@ -408,7 +408,7 @@
                 <p class="section-subtitle">Sin suscripciones mensuales. Sin compromisos.</p>
             </div>
 
-            <div class="pricing-grid pricing-grid-three">
+            <div class="pricing-grid pricing-grid-two">
                 <!-- Free Plan -->
                 <div class="pricing-card pricing-card-free">
                     <div class="pricing-card-header">
@@ -427,10 +427,16 @@
 
                 <!-- Pro Plan -->
                 <div class="pricing-card pricing-card-pro">
-                    <div class="pricing-popular">Más Popular</div>
+                    <div class="pricing-popular">Oferta de Lanzamiento</div>
                     <div class="pricing-card-header">
                         <span class="pricing-badge pricing-badge-pro">PRO</span>
-                        <h3>$19.99<span class="price-note"> de una sola vez</span></h3>
+                        <div class="pricing-promo-section">
+                            <div class="pricing-promo-price">
+                                <h3 class="promo-price">$14.99<span class="price-note"> de una sola vez</span></h3>
+                                <p class="regular-price"><s>$24.99</s></p>
+                            </div>
+                            <div class="savings-badge">Ahorras $10</div>
+                        </div>
                         <p class="pricing-desc">Unlimited. Para siempre.</p>
                     </div>
                     <ul class="pricing-features">
@@ -441,26 +447,25 @@
                         <li><span class="check">✓</span> Historial completo</li>
                         <li><span class="check">✓</span> 100% offline, sin cloud</li>
                     </ul>
-                    <button class="btn btn-primary btn-large" onclick="scrollToCheckout('pro')">Desbloquear Pro — $19.99</button>
+                    <button class="btn btn-primary btn-large" onclick="scrollToCheckout('pro')">Desbloquear Pro — $14.99</button>
                     <p class="pricing-footer">Un pago. Tuyo para siempre.</p>
                 </div>
+            </div>
 
-                <!-- Team Plan -->
-                <div class="pricing-card pricing-card-team">
-                    <div class="pricing-card-header">
-                        <span class="pricing-badge pricing-badge-team">TEAM</span>
-                        <h3>$59.99<span class="price-note"> de una sola vez</span></h3>
-                        <p class="pricing-desc">Para 3-5 usuarios</p>
+            <!-- Competitor Comparison -->
+            <div class="competitor-comparison">
+                <h3>Comparado con software similar</h3>
+                <div class="comparison-cards">
+                    <div class="comparison-item ivoz-item">
+                        <span class="comparison-name">iVoz Pro</span>
+                        <span class="comparison-price">$14.99</span>
+                        <span class="comparison-period">de una sola vez</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li><span class="check">✓</span> Todo lo de Pro</li>
-                        <li><span class="check">✓</span> 3-5 licencias (comparte)</li>
-                        <li><span class="check">✓</span> Sin límites por usuario</li>
-                        <li><span class="check">✓</span> Soporte prioritario</li>
-                        <li><span class="check">✓</span> Para freelancers y pequeños equipos</li>
-                    </ul>
-                    <button class="btn btn-primary btn-large" onclick="scrollToCheckout('team')">Desbloquear Team — $59.99</button>
-                    <p class="pricing-footer">Perfecto para agencias y equipos pequeños.</p>
+                    <div class="comparison-item competitor-item">
+                        <span class="comparison-name">Whisper Flow</span>
+                        <span class="comparison-price">$180</span>
+                        <span class="comparison-period">por año ($15/mes)</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -477,44 +482,37 @@
                 <div class="comparison-header">
                     <div class="comparison-cell comparison-feature">Característica</div>
                     <div class="comparison-cell comparison-free">Gratis</div>
-                    <div class="comparison-cell comparison-pro">Pro ($19.99)</div>
-                    <div class="comparison-cell comparison-pro">Team ($59.99)</div>
+                    <div class="comparison-cell comparison-pro">Pro ($14.99)</div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell comparison-feature">Palabras/mes</div>
                     <div class="comparison-cell comparison-free">2,000</div>
-                    <div class="comparison-cell comparison-pro"><strong>Ilimitadas</strong></div>
                     <div class="comparison-cell comparison-pro"><strong>Ilimitadas</strong></div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell comparison-feature">Limpieza IA</div>
                     <div class="comparison-cell comparison-free"><span class="no">—</span></div>
                     <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
-                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell comparison-feature">Todos los tonos</div>
                     <div class="comparison-cell comparison-free"><span class="no">—</span></div>
-                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                     <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell comparison-feature">Historial</div>
                     <div class="comparison-cell comparison-free"><span class="no">—</span></div>
                     <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
-                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell comparison-feature">Pago</div>
                     <div class="comparison-cell comparison-free">Gratis forever</div>
                     <div class="comparison-cell comparison-pro">Una sola vez</div>
-                    <div class="comparison-cell comparison-pro">Una sola vez</div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Usuarios</div>
-                    <div class="comparison-cell comparison-free">1</div>
-                    <div class="comparison-cell comparison-pro">1</div>
-                    <div class="comparison-cell comparison-pro">3-5</div>
+                    <div class="comparison-cell comparison-feature">100% Offline</div>
+                    <div class="comparison-cell comparison-free"><span class="yes">✓</span></div>
+                    <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
             </div>
         </div>

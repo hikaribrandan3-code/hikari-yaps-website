@@ -826,6 +826,11 @@ body {
     max-width: 1200px;
 }
 
+.pricing-grid-two {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+}
+
 /* Price Increase Banner */
 .price-increase-banner {
     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
@@ -962,6 +967,124 @@ body {
 .pricing-badge-pro {
     color: var(--accent);
     background: var(--accent-light);
+}
+
+/* Promo Pricing Display */
+.pricing-promo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.pricing-promo-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.pricing-promo-price .promo-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0;
+}
+
+.pricing-promo-price .promo-price .price-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.pricing-promo-price .regular-price {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.regular-price s {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.savings-badge {
+    background: linear-gradient(135deg, #34c759 0%, #30b34a 100%);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Competitor Comparison */
+.competitor-comparison {
+    margin-top: 64px;
+    padding: 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.competitor-comparison h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 32px;
+    color: var(--text-primary);
+}
+
+.comparison-cards {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.comparison-item {
+    flex: 1;
+    min-width: 220px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--bg-card-elevated);
+    transition: var(--transition);
+}
+
+.comparison-item:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+}
+
+.comparison-item.ivoz-item {
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.06);
+}
+
+.comparison-name {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.comparison-price {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.comparison-period {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
 }
 
 .pricing-card h3 {
