@@ -663,6 +663,22 @@
                 <p>Gracias por usar iVoz.</p>
                 <p class="footer-contact">Contacto: 351-212-2600</p>
                 <p class="footer-location">Córdoba, Argentina</p>
+
+                <!-- Payment Partners -->
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #86868b;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.5 2C7.67 2 7 2.67 7 3.5V20.5C7 21.33 7.67 22 8.5 22H15.5C16.33 22 17 21.33 17 20.5V3.5C17 2.67 16.33 2 15.5 2H8.5Z" fill="#003087" opacity="0.6"/>
+                        </svg>
+                        <span>Powered by PayPal</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #86868b;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="20" rx="3" fill="#009ee3" opacity="0.6"/>
+                        </svg>
+                        <span>Powered by Mercado Pago</span>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -714,8 +730,11 @@
                 <div id="payment-method-selector" style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
                     <button type="button" class="payment-method-button" onclick="selectPaymentMethod('paypal')">
                         <div style="display: flex; align-items: center; gap: 16px; width: 100%;">
-                            <div style="width: 50px; height: 40px; background: #003087; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">
-                                P
+                            <div style="width: 50px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <svg width="40" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.5 2C7.67 2 7 2.67 7 3.5V20.5C7 21.33 7.67 22 8.5 22H15.5C16.33 22 17 21.33 17 20.5V3.5C17 2.67 16.33 2 15.5 2H8.5ZM8.8 3H15.2C15.6 3 16 3.4 16 3.8V20.2C16 20.6 15.6 21 15.2 21H8.8C8.4 21 8 20.6 8 20.2V3.8C8 3.4 8.4 3 8.8 3Z" fill="#003087"/>
+                                    <text x="12" y="16" font-size="8" font-weight="bold" fill="#003087" text-anchor="middle">PayPal</text>
+                                </svg>
                             </div>
                             <div style="flex: 1; text-align: left;">
                                 <div style="font-weight: 600; color: #1d1d1f;">PayPal</div>
@@ -727,8 +746,13 @@
 
                     <button type="button" class="payment-method-button" onclick="selectPaymentMethod('mercadopago')">
                         <div style="display: flex; align-items: center; gap: 16px; width: 100%;">
-                            <div style="width: 50px; height: 40px; background: #009ee3; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">
-                                MP
+                            <div style="width: 50px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <svg width="40" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="2" y="2" width="20" height="20" rx="4" fill="#009ee3"/>
+                                    <circle cx="7" cy="12" r="2.5" fill="white"/>
+                                    <circle cx="12" cy="12" r="2.5" fill="white"/>
+                                    <circle cx="17" cy="12" r="2.5" fill="white"/>
+                                </svg>
                             </div>
                             <div style="flex: 1; text-align: left;">
                                 <div style="font-weight: 600; color: #1d1d1f;">Mercado Pago</div>
