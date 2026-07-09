@@ -447,7 +447,10 @@
                         <li><span class="check">✓</span> Historial completo</li>
                         <li><span class="check">✓</span> 100% offline, sin cloud</li>
                     </ul>
-                    <button class="btn btn-primary btn-large" onclick="scrollToCheckout('pro')">Desbloquear Pro — $14.99</button>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div id="paypal-button-container"></div>
+                        <button class="btn btn-outline btn-large" id="mp-button" style="width: 100%;">Pagar con Mercado Pago — $14.99</button>
+                    </div>
                     <p class="pricing-footer">Un pago. Tuyo para siempre.</p>
                 </div>
             </div>

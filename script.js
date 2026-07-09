@@ -232,10 +232,11 @@ if (testimonialCards.length > 0) {
     setInterval(autoRotateTestimonials, 5000); // Change every 5 seconds
 }
 
-// ===== PAYPAL INTEGRATION =====
+// ===== PAYPAL & MERCADO PAGO INTEGRATION =====
 document.addEventListener('DOMContentLoaded', () => {
     initDemoAnimation();
     initPayPal();
+    initMercadoPago();
 });
 
 function initPayPal() {
@@ -352,4 +353,90 @@ function showSuccessPage(code, email) {
 
     // Scroll to top
     window.scrollTo(0, 0);
+}
+
+// ===== MERCADO PAGO INTEGRATION =====
+function initMercadoPago() {
+    const mpButton = document.getElementById('mp-button');
+
+    if (mpButton) {
+        mpButton.addEventListener('click', async () => {
+            const email = prompt('Ingresa tu email para continuar:');
+            if (!email) return;
+
+            mpButton.disabled = true;
+            mpButton.textContent = 'Cargando...';
+
+            try {
+                // Create preference
+                const response = await fetch('https://nfwcquwoyaeqgekncmyc.supabase.co/functions/v1/handle-mercadopago-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: 'create',
+                        email: email
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success && result.initPoint) {
+                    // Redirect to Mercado Pago
+                    window.location.href = result.initPoint;
+                } else {
+                    alert('Error creating payment. Please try again.');
+                    mpButton.disabled = false;
+                    mpButton.textContent = 'Pagar con Mercado Pago — $14.99';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error creating payment. Please try again.');
+                mpButton.disabled = false;
+                mpButton.textContent = 'Pagar con Mercado Pago — $14.99';
+            }
+        });
+    }
+}
+
+// Check if returning from Mercado Pago
+window.addEventListener('load', () => {
+    const params = new URLSearchParams(window.location.search);
+    const paymentStatus = params.get('payment');
+    const preferenceId = params.get('preference_id');
+
+    if (paymentStatus === 'success' && preferenceId) {
+        const email = prompt('Confirma tu email para generar el código:');
+        if (email) {
+            verifyMercadoPagoPayment(preferenceId, email);
+        }
+    }
+});
+
+async function verifyMercadoPagoPayment(preferenceId, email) {
+    try {
+        const response = await fetch('https://nfwcquwoyaeqgekncmyc.supabase.co/functions/v1/handle-mercadopago-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                action: 'verify',
+                preferenceId: preferenceId,
+                email: email
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            showSuccessPage(result.code, result.email);
+        } else {
+            alert('Payment verification failed: ' + result.error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error verifying payment. Please contact support.');
+    }
 }
