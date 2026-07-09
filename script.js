@@ -232,7 +232,138 @@ if (testimonialCards.length > 0) {
     setInterval(autoRotateTestimonials, 5000); // Change every 5 seconds
 }
 
-// ===== INITIALIZE ON DOM READY =====
+// ===== PAYPAL INTEGRATION =====
 document.addEventListener('DOMContentLoaded', () => {
     initDemoAnimation();
+    initPayPal();
 });
+
+function initPayPal() {
+    const proButton = document.querySelector('button[onclick="scrollToCheckout(\'pro\')"]');
+
+    if (proButton && typeof paypal !== 'undefined') {
+        proButton.style.display = 'none';
+
+        const container = proButton.parentElement;
+        const paypalContainer = document.createElement('div');
+        paypalContainer.id = 'paypal-button-container';
+        paypalContainer.style.marginTop = '20px';
+        container.insertBefore(paypalContainer, proButton);
+
+        paypal.Buttons({
+            createOrder: (data, actions) => {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '14.99'
+                        }
+                    }]
+                });
+            },
+            onApprove: (data, actions) => {
+                return actions.order.capture().then(details => {
+                    // Generate activation code
+                    const code = generateActivationCode();
+                    const email = details.payer.email_address;
+
+                    // Save to Supabase
+                    saveActivationCode(code, email, details.id);
+
+                    // Redirect to success page
+                    showSuccessPage(code, email);
+                });
+            },
+            onError: (err) => {
+                console.error('PayPal Error:', err);
+                alert('Payment failed. Please try again.');
+            }
+        }).render('#paypal-button-container');
+    }
+}
+
+function generateActivationCode() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let code = '';
+    for (let i = 0; i < 7; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return code;
+}
+
+async function saveActivationCode(code, email, paypalOrderId) {
+    const supabaseUrl = 'https://nfwcquwoyaeqgekncmyc.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5md2NxdXdveWFlcWdla25jbXljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4ODYwNDIsImV4cCI6MjA5NzQ2MjA0Mn0._nY420m1fbyfK1hlF-BBYQ2dMjHcvtJjHG2w00NnCLM';
+
+    try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/activation_codes`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${supabaseKey}`,
+                'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({
+                code: code,
+                email: email,
+                paypal_order_id: paypalOrderId,
+                used: false,
+                created_at: new Date().toISOString()
+            })
+        });
+
+        console.log('Code saved:', response.status);
+    } catch (error) {
+        console.error('Error saving code:', error);
+    }
+}
+
+function showSuccessPage(code, email) {
+    // Hide pricing section
+    const pricingSection = document.querySelector('.pricing');
+    if (pricingSection) pricingSection.style.display = 'none';
+
+    // Create success modal
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    `;
+
+    modal.innerHTML = `
+        <div style="background: white; padding: 40px; border-radius: 20px; max-width: 500px; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.1);">
+            <h2 style="font-size: 2rem; margin-bottom: 20px; color: #34c759;">✓ ¡Pago Recibido!</h2>
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">Tu licencia de iVoz Pro ha sido activada.</p>
+
+            <div style="background: #f5f5f7; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                <p style="font-size: 0.9rem; color: #999; margin-bottom: 10px;">Tu código de activación:</p>
+                <p style="font-size: 2rem; font-weight: 700; color: #0071e3; font-family: monospace; letter-spacing: 2px; margin: 0;">${code}</p>
+            </div>
+
+            <p style="color: #555; margin-bottom: 10px;">Confirmación enviada a: <strong>${email}</strong></p>
+
+            <ol style="text-align: left; color: #555; margin-bottom: 30px;">
+                <li style="margin-bottom: 10px;">Abre iVoz en tu Mac</li>
+                <li style="margin-bottom: 10px;">Ve a Configuración → Licencia</li>
+                <li style="margin-bottom: 10px;">Ingresa el código: <strong>${code}</strong></li>
+                <li>¡Listo! Disfruta acceso ilimitado</li>
+            </ol>
+
+            <button onclick="window.location.href='https://ivoz.vercel.app/'" style="background: #0071e3; color: white; border: none; padding: 12px 32px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">
+                Volver al Inicio
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
