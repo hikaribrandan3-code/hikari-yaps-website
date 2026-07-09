@@ -1,7 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
 
-const MP_PUBLIC_KEY = "APP_USR-d4fe7ef3-9482-4200-8e02-3acc4e4d1a6b"
 const MP_ACCESS_TOKEN = "APP_USR-2339974286884334-070902-608a70d4e9efadb7719b18b396419ee9-1911962862"
 const MP_API = "https://api.mercadopago.com"
 
@@ -34,7 +33,7 @@ async function createMercadoPagoPreference(email: string): Promise<any> {
         email: email
       },
       back_urls: {
-        success: "https://ivoz.vercel.app/?payment=success",
+        success: `https://ivoz.vercel.app/?payment=success&email=${encodeURIComponent(email)}`,
         failure: "https://ivoz.vercel.app/?payment=failure",
         pending: "https://ivoz.vercel.app/?payment=pending"
       },
@@ -45,8 +44,8 @@ async function createMercadoPagoPreference(email: string): Promise<any> {
   return await response.json()
 }
 
-async function getMercadoPagoPaymentStatus(preferenceId: string): Promise<any> {
-  const response = await fetch(`${MP_API}/v1/payments/search?external_reference=${preferenceId}`, {
+async function getMercadoPagoPayment(paymentId: string): Promise<any> {
+  const response = await fetch(`${MP_API}/v1/payments/${paymentId}`, {
     method: "GET",
     headers: {
       "Authorization": `Bearer ${MP_ACCESS_TOKEN}`
@@ -69,14 +68,14 @@ serve(async (req) => {
   }
 
   try {
-    const { action, email, preferenceId } = await req.json()
+    const { action, email, paymentId } = await req.json()
 
     // CREATE preference
     if (action === "create") {
       if (!email) {
         return new Response(
           JSON.stringify({ error: "Missing email" }),
-          { status: 400, headers: { "Content-Type": "application/json" } }
+          { status: 400, headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } }
         )
       }
 
@@ -85,7 +84,7 @@ serve(async (req) => {
       if (!preference.id || !preference.init_point) {
         return new Response(
           JSON.stringify({ error: "Failed to create preference", details: preference }),
-          { status: 400, headers: { "Content-Type": "application/json" } }
+          { status: 400, headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } }
         )
       }
 
@@ -105,30 +104,28 @@ serve(async (req) => {
       )
     }
 
-    // VERIFY payment and generate code
+    // VERIFY payment (using the payment_id MP appends to the return URL) and generate code
     if (action === "verify") {
-      if (!preferenceId || !email) {
+      if (!paymentId || !email) {
         return new Response(
-          JSON.stringify({ error: "Missing preferenceId or email" }),
-          { status: 400, headers: { "Content-Type": "application/json" } }
+          JSON.stringify({ error: "Missing paymentId or email" }),
+          { status: 400, headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } }
         )
       }
 
-      const paymentStatus = await getMercadoPagoPaymentStatus(preferenceId)
+      const payment = await getMercadoPagoPayment(paymentId)
 
-      if (!paymentStatus.results || paymentStatus.results.length === 0) {
+      if (!payment || !payment.status) {
         return new Response(
-          JSON.stringify({ error: "Payment not found" }),
-          { status: 400, headers: { "Content-Type": "application/json" } }
+          JSON.stringify({ error: "Payment not found", details: payment }),
+          { status: 400, headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } }
         )
       }
-
-      const payment = paymentStatus.results[0]
 
       if (payment.status !== "approved") {
         return new Response(
           JSON.stringify({ error: `Payment status: ${payment.status}` }),
-          { status: 400, headers: { "Content-Type": "application/json" } }
+          { status: 400, headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } }
         )
       }
 
@@ -146,7 +143,7 @@ serve(async (req) => {
         .insert({
           code: code,
           email: email,
-          paypal_order_id: payment.id,
+          paypal_order_id: `mp_${payment.id}`,
           used: false,
           created_at: new Date().toISOString()
         })
@@ -155,7 +152,7 @@ serve(async (req) => {
         console.error("Supabase error:", error)
         return new Response(
           JSON.stringify({ error: "Failed to save activation code", details: error }),
-          { status: 500, headers: { "Content-Type": "application/json" } }
+          { status: 500, headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } }
         )
       }
 
@@ -178,7 +175,7 @@ serve(async (req) => {
 
     return new Response(
       JSON.stringify({ error: "Invalid action" }),
-      { status: 400, headers: { "Content-Type": "application/json" } }
+      { status: 400, headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } }
     )
   } catch (error) {
     console.error("Error:", error)

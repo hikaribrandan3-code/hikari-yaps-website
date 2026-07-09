@@ -248,43 +248,9 @@ function initSupabase() {
 // ===== PAYPAL & MERCADO PAGO INTEGRATION =====
 document.addEventListener('DOMContentLoaded', () => {
     initDemoAnimation();
-    initPayPal();
-    initMercadoPago();
     initSupabase();
+    checkMercadoPagoReturn();
 });
-
-function initPayPal() {
-    const proButton = document.querySelector('button[onclick="scrollToCheckout(\'pro\')"]');
-
-    if (proButton && typeof paypal !== 'undefined') {
-        proButton.style.display = 'none';
-
-        const container = proButton.parentElement;
-        const paypalContainer = document.createElement('div');
-        paypalContainer.id = 'paypal-button-container';
-        paypalContainer.style.marginTop = '20px';
-        container.insertBefore(paypalContainer, proButton);
-
-        paypal.Buttons({
-            createOrder: (data, actions) => {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '14.99'
-                        }
-                    }]
-                });
-            },
-            onApprove: (data, actions) => {
-                return verifyPaymentAndGenerateCode(data.orderID, actions);
-            },
-            onError: (err) => {
-                console.error('PayPal Error:', err);
-                alert('Payment failed. Please try again.');
-            }
-        }).render('#paypal-button-container');
-    }
-}
 
 async function verifyPaymentAndGenerateCode(orderId, actions) {
     try {
@@ -307,6 +273,7 @@ async function verifyPaymentAndGenerateCode(orderId, actions) {
         const result = await response.json();
 
         if (result.success) {
+            closeCheckoutModal();
             showSuccessPage(result.code, result.email);
         } else {
             console.error('Payment verification failed:', result.error);
@@ -370,65 +337,23 @@ function showSuccessPage(code, email) {
 }
 
 // ===== MERCADO PAGO INTEGRATION =====
-function initMercadoPago() {
-    const mpButton = document.getElementById('mp-button');
 
-    if (mpButton) {
-        mpButton.addEventListener('click', async () => {
-            const email = prompt('Ingresa tu email para continuar:');
-            if (!email) return;
+// Check if returning from Mercado Pago. MP appends payment_id/status itself;
+// email travels via our own query param since the page fully reloads.
+function checkMercadoPagoReturn() {
+    const params = new URLSearchParams(window.location.search);
+    const paymentStatus = params.get('payment');
+    const paymentId = params.get('payment_id') || params.get('collection_id');
+    const email = params.get('email');
 
-            mpButton.disabled = true;
-            mpButton.textContent = 'Cargando...';
-
-            try {
-                // Create preference
-                const response = await fetch('https://nfwcquwoyaeqgekncmyc.supabase.co/functions/v1/handle-mercadopago-payment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        action: 'create',
-                        email: email
-                    })
-                });
-
-                const result = await response.json();
-
-                if (result.success && result.initPoint) {
-                    // Redirect to Mercado Pago
-                    window.location.href = result.initPoint;
-                } else {
-                    alert('Error creating payment. Please try again.');
-                    mpButton.disabled = false;
-                    mpButton.textContent = 'Pagar con Mercado Pago — $14.99';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error creating payment. Please try again.');
-                mpButton.disabled = false;
-                mpButton.textContent = 'Pagar con Mercado Pago — $14.99';
-            }
-        });
+    if (paymentStatus === 'success' && paymentId && email) {
+        verifyMercadoPagoPayment(paymentId, decodeURIComponent(email));
+    } else if (paymentStatus === 'failure') {
+        alert('El pago no se pudo completar. Por favor intenta de nuevo.');
     }
 }
 
-// Check if returning from Mercado Pago
-window.addEventListener('load', () => {
-    const params = new URLSearchParams(window.location.search);
-    const paymentStatus = params.get('payment');
-    const preferenceId = params.get('preference_id');
-
-    if (paymentStatus === 'success' && preferenceId) {
-        const email = prompt('Confirma tu email para generar el código:');
-        if (email) {
-            verifyMercadoPagoPayment(preferenceId, email);
-        }
-    }
-});
-
-async function verifyMercadoPagoPayment(preferenceId, email) {
+async function verifyMercadoPagoPayment(paymentId, email) {
     try {
         const response = await fetch('https://nfwcquwoyaeqgekncmyc.supabase.co/functions/v1/handle-mercadopago-payment', {
             method: 'POST',
@@ -437,7 +362,7 @@ async function verifyMercadoPagoPayment(preferenceId, email) {
             },
             body: JSON.stringify({
                 action: 'verify',
-                preferenceId: preferenceId,
+                paymentId: paymentId,
                 email: email
             })
         });
@@ -466,6 +391,11 @@ function closeCheckoutModal() {
     document.body.style.overflow = 'auto';
     document.getElementById('checkout-step-1').style.display = 'block';
     document.getElementById('checkout-step-2').style.display = 'none';
+    document.getElementById('payment-method-selector').style.display = 'flex';
+    document.getElementById('paypal-render-container').style.display = 'none';
+    document.getElementById('paypal-render-container').innerHTML = '';
+    document.getElementById('mp-loading-state').style.display = 'none';
+    document.getElementById('payment-nav-buttons').style.display = 'flex';
     document.getElementById('customer-form').reset();
 }
 
@@ -513,40 +443,64 @@ function selectPaymentMethod(method) {
     const email = window.currentCheckoutEmail;
 
     if (method === 'paypal') {
-        closeCheckoutModal();
-        // Trigger PayPal button
-        const paypalBtn = document.querySelector('#paypal-button-container button');
-        if (paypalBtn) paypalBtn.click();
-        else initiatePayPalPayment(email);
+        renderPayPalButtons(email);
     } else if (method === 'mercadopago') {
-        closeCheckoutModal();
         initiateMercadoPagoPayment(email);
     }
 }
 
-function initiatePayPalPayment(email) {
-    // Create PayPal order and capture
-    if (typeof paypal !== 'undefined') {
-        paypal.Buttons({
-            createOrder: (data, actions) => {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: { value: '14.99' }
-                    }]
-                });
-            },
-            onApprove: (data, actions) => {
-                return verifyPaymentAndGenerateCode(data.orderID, actions);
-            },
-            onError: (err) => {
-                console.error('PayPal Error:', err);
-                alert('Payment failed. Please try again.');
-            }
-        }).render('#paypal-checkout-temp');
+function renderPayPalButtons(email) {
+    if (typeof paypal === 'undefined') {
+        alert('PayPal no está disponible en este momento. Por favor intenta de nuevo o usa Mercado Pago.');
+        return;
     }
+
+    // Swap views: hide the method selector, show the PayPal render target
+    document.getElementById('payment-method-selector').style.display = 'none';
+    document.getElementById('payment-nav-buttons').style.display = 'none';
+    const container = document.getElementById('paypal-render-container');
+    container.style.display = 'block';
+    container.innerHTML = ''; // clear any previous render
+
+    // Back button so the user isn't stuck if they change their mind
+    const backBtn = document.createElement('button');
+    backBtn.type = 'button';
+    backBtn.className = 'btn btn-outline';
+    backBtn.textContent = 'Elegir otro método';
+    backBtn.style.width = '100%';
+    backBtn.style.marginTop = '12px';
+    backBtn.onclick = () => {
+        document.getElementById('payment-method-selector').style.display = 'flex';
+        document.getElementById('payment-nav-buttons').style.display = 'flex';
+        container.style.display = 'none';
+        container.innerHTML = '';
+    };
+
+    paypal.Buttons({
+        createOrder: (data, actions) => {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: { value: '14.99' }
+                }]
+            });
+        },
+        onApprove: (data, actions) => {
+            return verifyPaymentAndGenerateCode(data.orderID, actions);
+        },
+        onError: (err) => {
+            console.error('PayPal Error:', err);
+            alert('El pago falló. Por favor intenta de nuevo.');
+        }
+    }).render(container).then(() => {
+        container.appendChild(backBtn);
+    });
 }
 
 async function initiateMercadoPagoPayment(email) {
+    document.getElementById('payment-method-selector').style.display = 'none';
+    document.getElementById('payment-nav-buttons').style.display = 'none';
+    document.getElementById('mp-loading-state').style.display = 'block';
+
     try {
         const response = await fetch('https://nfwcquwoyaeqgekncmyc.supabase.co/functions/v1/handle-mercadopago-payment', {
             method: 'POST',
@@ -559,15 +513,23 @@ async function initiateMercadoPagoPayment(email) {
             })
         });
 
+        if (!response.ok) {
+            const text = await response.text();
+            throw new Error(`Edge Function returned ${response.status}: ${text}`);
+        }
+
         const result = await response.json();
 
         if (result.success && result.initPoint) {
             window.location.href = result.initPoint;
         } else {
-            alert('Error creating payment. Please try again.');
+            throw new Error(result.error || 'Unknown error creating preference');
         }
     } catch (error) {
-        console.error('Error:', error);
-        alert('Error creating payment. Please try again.');
+        console.error('Mercado Pago error:', error);
+        alert('No se pudo iniciar el pago con Mercado Pago. Verifica que la función esté desplegada, o intenta con PayPal.');
+        document.getElementById('mp-loading-state').style.display = 'none';
+        document.getElementById('payment-method-selector').style.display = 'flex';
+        document.getElementById('payment-nav-buttons').style.display = 'flex';
     }
 }

@@ -710,7 +710,8 @@
                     <p id="payment-email" style="color: #666; font-size: 0.95rem;"></p>
                 </div>
 
-                <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
+                <!-- Method selector (shown first) -->
+                <div id="payment-method-selector" style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
                     <button type="button" class="payment-method-button" onclick="selectPaymentMethod('paypal')">
                         <div style="display: flex; align-items: center; gap: 16px; width: 100%;">
                             <div style="width: 50px; height: 40px; background: #003087; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">
@@ -738,7 +739,15 @@
                     </button>
                 </div>
 
-                <div style="display: flex; gap: 12px;">
+                <!-- PayPal buttons render here (hidden until PayPal is chosen) -->
+                <div id="paypal-render-container" style="display: none; margin-bottom: 20px;"></div>
+
+                <!-- Loading state for Mercado Pago redirect -->
+                <div id="mp-loading-state" style="display: none; text-align: center; padding: 20px; margin-bottom: 20px; color: #666;">
+                    Redirigiendo a Mercado Pago...
+                </div>
+
+                <div id="payment-nav-buttons" style="display: flex; gap: 12px;">
                     <button type="button" class="btn btn-outline" onclick="backToStep1()" style="flex: 1;">
                         Atrás
                     </button>
