@@ -233,16 +233,24 @@ if (testimonialCards.length > 0) {
 }
 
 // ===== SUPABASE CLIENT =====
-const supabaseUrl = 'https://nfwcquwoyaeqgekncmyc.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5md2NxdXdveWFlcWdla25jbXljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4ODYwNDIsImV4cCI6MjA5NzQ2MjA0Mn0._nY420m1fbyfK1hlF-BBYQ2dMjHcvtJjHG2w00NnCLM';
-const { createClient } = window.supabase;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+let supabaseClient = null;
+
+function initSupabase() {
+    if (!supabaseClient && window.supabase) {
+        const { createClient } = window.supabase;
+        const supabaseUrl = 'https://nfwcquwoyaeqgekncmyc.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5md2NxdXdveWFlcWdla25jbXljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4ODYwNDIsImV4cCI6MjA5NzQ2MjA0Mn0._nY420m1fbyfK1hlF-BBYQ2dMjHcvtJjHG2w00NnCLM';
+        supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
+    }
+    return supabaseClient;
+}
 
 // ===== PAYPAL & MERCADO PAGO INTEGRATION =====
 document.addEventListener('DOMContentLoaded', () => {
     initDemoAnimation();
     initPayPal();
     initMercadoPago();
+    initSupabase();
 });
 
 function initPayPal() {
@@ -472,7 +480,8 @@ async function proceedToPayment() {
 
     // Save customer info to Supabase
     try {
-        const { error } = await supabase
+        const client = initSupabase();
+        const { error } = await client
             .from('customers')
             .insert({
                 name: name || 'Usuario',
