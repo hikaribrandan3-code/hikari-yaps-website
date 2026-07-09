@@ -232,6 +232,12 @@ if (testimonialCards.length > 0) {
     setInterval(autoRotateTestimonials, 5000); // Change every 5 seconds
 }
 
+// ===== SUPABASE CLIENT =====
+const supabaseUrl = 'https://nfwcquwoyaeqgekncmyc.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5md2NxdXdveWFlcWdla25jbXljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4ODYwNDIsImV4cCI6MjA5NzQ2MjA0Mn0._nY420m1fbyfK1hlF-BBYQ2dMjHcvtJjHG2w00NnCLM';
+const { createClient } = window.supabase;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
 // ===== PAYPAL & MERCADO PAGO INTEGRATION =====
 document.addEventListener('DOMContentLoaded', () => {
     initDemoAnimation();
@@ -466,21 +472,15 @@ async function proceedToPayment() {
 
     // Save customer info to Supabase
     try {
-        const response = await fetch('https://nfwcquwoyaeqgekncmyc.supabase.co/rest/v1/customers', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5md2NxdXdveWFlcWdla25jbXljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4ODYwNDIsImV4cCI6MjA5NzQ2MjA0Mn0._nY420m1fbyfK1hlF-BBYQ2dMjHcvtJjHG2w00NnCLM',
-                'Prefer': 'return=minimal'
-            },
-            body: JSON.stringify({
+        const { error } = await supabase
+            .from('customers')
+            .insert({
                 name: name || 'Usuario',
                 email: email
-            })
-        });
+            });
 
-        if (!response.ok && response.status !== 409) { // 409 = email already exists
-            console.error('Error saving customer');
+        if (error && error.code !== '23505') { // 23505 = duplicate email
+            console.error('Error saving customer:', error);
         }
 
         // Move to payment method selection
