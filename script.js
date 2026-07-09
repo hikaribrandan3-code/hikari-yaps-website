@@ -480,7 +480,7 @@ function renderPayPalButtons(email) {
         createOrder: (data, actions) => {
             return actions.order.create({
                 purchase_units: [{
-                    amount: { value: '14.99' }
+                    amount: { value: '8.99' }
                 }]
             });
         },
