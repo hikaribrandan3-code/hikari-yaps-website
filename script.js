@@ -308,20 +308,20 @@ function showSuccessPage(code, email) {
     modal.innerHTML = `
         <div style="background: white; padding: 40px; border-radius: 20px; max-width: 500px; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.1);">
             <h2 style="font-size: 2rem; margin-bottom: 20px; color: #34c759;">✓ ¡Pago Recibido!</h2>
-            <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">Tu licencia de iVoz Pro ha sido activada.</p>
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">Tu licencia de iVoz Pro está lista.</p>
 
-            <div style="background: #f5f5f7; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
-                <p style="font-size: 0.9rem; color: #999; margin-bottom: 10px;">Tu código de activación:</p>
-                <p style="font-size: 2rem; font-weight: 700; color: #0071e3; font-family: monospace; letter-spacing: 2px; margin: 0;">${code}</p>
+            <div style="background: #FFF3CD; border: 1px solid #FFC107; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                <p style="font-size: 0.9rem; color: #856404; margin-bottom: 10px; font-weight: 600;">⚠️ Tu código de activación (usa una sola vez):</p>
+                <p style="font-size: 2rem; font-weight: 700; color: #0071e3; font-family: monospace; letter-spacing: 2px; margin: 0; padding: 10px; background: white; border-radius: 8px;">${code}</p>
+                <p style="font-size: 0.85rem; color: #856404; margin-top: 10px; margin-bottom: 0;">Guárdalo en un lugar seguro. Es como una API key — úsalo una sola vez para activar iVoz Pro en tu Mac.</p>
             </div>
 
-            <p style="color: #555; margin-bottom: 10px;">Confirmación enviada a: <strong>${email}</strong></p>
-
             <ol style="text-align: left; color: #555; margin-bottom: 30px;">
-                <li style="margin-bottom: 10px;">Abre iVoz en tu Mac</li>
-                <li style="margin-bottom: 10px;">Ve a Configuración → Licencia</li>
-                <li style="margin-bottom: 10px;">Ingresa el código: <strong>${code}</strong></li>
-                <li>¡Listo! Disfruta acceso ilimitado</li>
+                <li style="margin-bottom: 12px;"><strong>Copia el código</strong> de arriba</li>
+                <li style="margin-bottom: 12px;">Abre <strong>iVoz</strong> en tu Mac</li>
+                <li style="margin-bottom: 12px;">Ve a <strong>Configuración → Licencia</strong></li>
+                <li style="margin-bottom: 12px;">Pega el código y haz clic en <strong>Activar</strong></li>
+                <li>¡Listo! Acceso ilimitado de por vida</li>
             </ol>
 
             <button onclick="window.location.href='https://ivoz.vercel.app/'" style="background: #0071e3; color: white; border: none; padding: 12px 32px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">
