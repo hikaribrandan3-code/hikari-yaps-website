@@ -874,6 +874,9 @@ async function initiateMercadoPagoPayment(email) {
 // ===== DOWNLOAD LINK INTERCEPTOR =====
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href*="iVoz.zip"]').forEach(link => {
+        // Don't intercept the download button inside the modal
+        if (link.closest('#download-modal')) return;
+
         link.addEventListener('click', (e) => {
             e.preventDefault();
             openDownloadModal();
