@@ -154,7 +154,7 @@ const translations = {
     'download.subtitle': 'Un comando para comenzar',
     'download.paste_instruction': 'Abre Terminal y pega esto:',
     'download.explanation': 'Esto descarga, extrae, elimina la advertencia de seguridad e inicia la app. Sin cuotas corporativas — el 100% de tu pago va al desarrollo.',
-    'download.download_button': 'Descargar (15 MB)',
+    'download.download_button': 'Descargar (10 MB)',
   },
   en: {
     'nav.features': 'Features',
@@ -310,7 +310,7 @@ const translations = {
     'download.subtitle': 'One command to get started',
     'download.paste_instruction': 'Open Terminal and paste this:',
     'download.explanation': 'This downloads, extracts, removes the security warning, and launches the app. No corporate signing fees — 100% of your payment goes to development.',
-    'download.download_button': 'Download (15 MB)',
+    'download.download_button': 'Download (10 MB)',
   }
 };
 

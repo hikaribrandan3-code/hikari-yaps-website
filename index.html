@@ -817,7 +817,7 @@
 
             <div style="background: #f5f5f5; padding: 20px; border-radius: 12px; margin-bottom: 24px;">
                 <p style="font-size: 0.9rem; color: #666; margin-bottom: 12px;" data-i18n="download.paste_instruction">Open Terminal and paste this:</p>
-                <code style="display: block; background: #2d2d2d; color: #f8f8f2; padding: 14px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.85rem; line-height: 1.4;">cd ~/Downloads && unzip -o iVoz.zip && xattr -cr ~/Downloads/iVoz.app && mv ~/Downloads/iVoz.app /Applications/iVoz.app && open /Applications/iVoz.app</code>
+                <code style="display: block; background: #2d2d2d; color: #f8f8f2; padding: 14px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.85rem; line-height: 1.4;">cd ~/Downloads && ditto -x -k iVoz.zip . && chmod -R u+w iVoz.app && xattr -dr com.apple.quarantine iVoz.app && rm -rf /Applications/iVoz.app && mv iVoz.app /Applications/ && open /Applications/iVoz.app</code>
             </div>
 
             <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;" data-i18n="download.explanation">
@@ -825,7 +825,7 @@
             </p>
 
             <a href="https://github.com/hikaribrandan3-code/hikari-yaps-website/releases/download/v1.0.0/iVoz.zip" class="btn btn-primary" style="width: 100%; display: block; text-align: center; text-decoration: none;" download data-i18n="download.download_button">
-                Download (15 MB)
+                Download (10 MB)
             </a>
         </div>
     </div>
