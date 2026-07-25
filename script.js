@@ -150,6 +150,11 @@ const translations = {
     'success.step4': 'Pega el código y haz clic en Activar',
     'success.step5': '¡Listo! Acceso ilimitado de por vida',
     'success.back': 'Volver al Inicio',
+    'download.title': 'Instrucciones de Configuración',
+    'download.subtitle': 'Un comando para comenzar',
+    'download.paste_instruction': 'Abre Terminal y pega esto:',
+    'download.explanation': 'Esto descarga, extrae, elimina la advertencia de seguridad e inicia la app. Sin cuotas corporativas — el 100% de tu pago va al desarrollo.',
+    'download.confirm_button': 'Entendido, vamos',
   },
   en: {
     'nav.features': 'Features',
@@ -301,6 +306,11 @@ const translations = {
     'success.step4': 'Paste the code and click Activate',
     'success.step5': 'Done! Lifetime unlimited access',
     'success.back': 'Back to Home',
+    'download.title': 'Setup Instructions',
+    'download.subtitle': 'One command to get started',
+    'download.paste_instruction': 'Open Terminal and paste this:',
+    'download.explanation': 'This downloads, extracts, removes the security warning, and launches the app. No corporate signing fees — 100% of your payment goes to development.',
+    'download.confirm_button': 'Got it, let\'s go',
   }
 };
 
@@ -714,6 +724,17 @@ function closeCheckoutModal() {
     document.getElementById('customer-form').reset();
 }
 
+// ===== DOWNLOAD MODAL =====
+function openDownloadModal() {
+    document.getElementById('download-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDownloadModal() {
+    document.getElementById('download-modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
 async function proceedToPayment() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
@@ -849,3 +870,13 @@ async function initiateMercadoPagoPayment(email) {
         document.getElementById('payment-nav-buttons').style.display = 'flex';
     }
 }
+
+// ===== DOWNLOAD LINK INTERCEPTOR =====
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href="iVoz.dmg"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            openDownloadModal();
+        });
+    });
+});
