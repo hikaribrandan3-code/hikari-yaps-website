@@ -873,7 +873,7 @@ async function initiateMercadoPagoPayment(email) {
 
 // ===== DOWNLOAD LINK INTERCEPTOR =====
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('a[href="iVoz.dmg"]').forEach(link => {
+    document.querySelectorAll('a[href*="iVoz.zip"]').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             openDownloadModal();
