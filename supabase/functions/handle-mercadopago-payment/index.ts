@@ -25,8 +25,8 @@ async function createMercadoPagoPreference(email: string): Promise<any> {
         {
           title: "iVoz Pro - Licencia de por vida",
           quantity: 1,
-          unit_price: 14.99,
-          currency_id: "USD"
+          unit_price: 200,
+          currency_id: "ARS"
         }
       ],
       payer: {
@@ -143,6 +143,7 @@ serve(async (req) => {
         .insert({
           code: code,
           email: email,
+          product: "ivoz",
           paypal_order_id: `mp_${payment.id}`,
           used: false,
           created_at: new Date().toISOString()

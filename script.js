@@ -112,7 +112,7 @@ const translations = {
     'faq.q4': '¿Cuánto espacio usa?',
     'faq.a4': 'La app ocupa ~34 MB. Los modelos se descargan al iniciar por primera vez: el modelo de voz es ~145 MB y el modelo opcional de limpieza IA es ~1 GB. Total: aproximadamente 1.2 GB. Todo se almacena localmente y nunca se actualiza a menos que tú elijas hacerlo.',
     'faq.q5': '¿Mis datos son realmente privados?',
-    'faq.a5': 'Absolutamente. Tu audio se procesa completamente en tu Mac usando el Motor Neural y la GPU. Nada se envía a ningún servidor. Tu historial de transcripciones se guarda localmente en ~/Library/Application Support/HikariYaps/. No recopilamos telemetría, no requerimos cuenta y no rastreamos nada.',
+    'faq.a5': 'Absolutamente. Tu audio se procesa completamente en tu Mac usando el Motor Neural y la GPU. Nada se envía a ningún servidor. Tu historial de transcripciones se guarda localmente en ~/Library/Application Support/iVoz/. No recopilamos telemetría, no requerimos cuenta y no rastreamos nada.',
     'footer.tagline': 'Dictado por voz para macOS.<br>Construido con amor, café y el Motor Neural.',
     'footer.copyright': '© 2026 iVoz. Todos los derechos reservados.',
     'checkout.title': 'Completa tu compra',
@@ -263,7 +263,7 @@ const translations = {
     'faq.q4': 'How much space does it use?',
     'faq.a4': 'The app is ~34 MB. Models download once on first launch: the voice model is ~145 MB and the optional AI cleanup model is ~1 GB. Total: about 1.2 GB. Everything stays local and never updates unless you choose to.',
     'faq.q5': 'Is my data really private?',
-    'faq.a5': 'Absolutely. Your audio is processed entirely on your Mac using the Neural Engine and GPU. Nothing is sent to any server. Your transcription history is stored locally in ~/Library/Application Support/HikariYaps/. We collect no telemetry, require no account, and track nothing.',
+    'faq.a5': 'Absolutely. Your audio is processed entirely on your Mac using the Neural Engine and GPU. Nothing is sent to any server. Your transcription history is stored locally in ~/Library/Application Support/iVoz/. We collect no telemetry, require no account, and track nothing.',
     'footer.tagline': 'Voice dictation for macOS.<br>Built with love, coffee, and the Neural Engine.',
     'footer.copyright': '© 2026 iVoz. All rights reserved.',
     'checkout.title': 'Complete your purchase',
@@ -677,7 +677,8 @@ async function verifyMercadoPagoPayment(paymentId, email) {
             body: JSON.stringify({
                 action: 'verify',
                 paymentId: paymentId,
-                email: email
+                email: email,
+                product: 'ivoz'
             })
         });
 
@@ -823,7 +824,8 @@ async function initiateMercadoPagoPayment(email) {
             },
             body: JSON.stringify({
                 action: 'create',
-                email: email
+                email: email,
+                product: 'ivoz'
             })
         });
 
