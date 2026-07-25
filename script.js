@@ -1,4 +1,4 @@
-// ===== LANGUAGE SYSTEM =====
+// ===== LANGUAGE SYSTEM ====
 const translations = {
   es: {
     'nav.features': 'Características',
