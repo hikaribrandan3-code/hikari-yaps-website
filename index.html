@@ -66,29 +66,30 @@
                     <span data-i18n="hero.badge">100% Offline — Sin Nube</span>
                 </div>
                 <h1 class="hero-title" data-i18n="hero.title">
-                    Escribe más rápido.<br>Sin tipear.
+                    Escribe más rápido.<br>Sin teclear.
                     <span class="accent-text">Al instante.</span>
                 </h1>
                 <p class="hero-subtitle" data-i18n="hero.subtitle">
                     iVoz convierte tu voz en texto en cualquier app de tu Mac. Ahorra horas cada semana. 100% offline, 100% privado.
                 </p>
                 <div class="hero-cta-group">
-                    <a href="iVoz.dmg" class="btn btn-primary" data-i18n="hero.cta-primary" download>
+                    <a href="iVoz.dmg" class="btn btn-primary" download>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                         </svg>
-                        Comenzar Prueba Gratuita
+                        <span data-i18n="hero.cta-primary">Comenzar Prueba Gratuita</span>
                     </a>
-                    <a href="#how-it-works" class="btn btn-secondary" data-i18n="hero.cta-secondary">Ver Cómo Funciona</a>
+                    <a href="#demo-video" class="btn btn-secondary" data-i18n="hero.cta-secondary">Ver Cómo Funciona</a>
                 </div>
+                <p class="hero-requirements" data-i18n="hero.requirements">3 días gratis, ilimitado · Requiere Mac con Apple Silicon (M1 o superior), macOS 14+</p>
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-number">0</span>
                         <span class="stat-label" data-i18n="hero.stat1">Llamadas API</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">0ms</span>
-                        <span class="stat-label" data-i18n="hero.stat2">Latencia</span>
+                        <span class="stat-number">0</span>
+                        <span class="stat-label" data-i18n="hero.stat2">Servidores</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number">100%</span>
@@ -111,32 +112,32 @@
                                 <div class="demo-animation">
                                     <div class="demo-state active" id="demoState1">
                                         <div class="demo-dot"></div>
-                                        <div class="demo-label">Escuchando...</div>
+                                        <div class="demo-label" data-i18n="demo.listening">Escuchando...</div>
                                     </div>
                                     <div class="demo-state" id="demoState2">
                                         <div class="demo-waveform-mini">
                                             <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                                         </div>
-                                        <div class="demo-label">Transcribiendo...</div>
+                                        <div class="demo-label" data-i18n="demo.transcribing">Transcribiendo...</div>
                                     </div>
                                     <div class="demo-state" id="demoState3">
                                         <div class="demo-typed-text">
                                             <span id="typedText"></span><span class="demo-cursor">|</span>
                                         </div>
-                                        <div class="demo-label done">Listo</div>
+                                        <div class="demo-label done" data-i18n="demo.done">Listo</div>
                                     </div>
                                     <div class="demo-state" id="demoState4">
                                         <div class="demo-done">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2.5">
                                                 <polyline points="20 6 9 17 4 12"/>
                                             </svg>
-                                            <span>Pegado en tu app</span>
+                                            <span data-i18n="demo.pasted">Pegado en tu app</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="screen-meta">
-                                    <span class="screen-tag">Demo en vivo</span>
-                                    <span class="screen-accuracy">98% Precisión</span>
+                                    <span class="screen-tag" data-i18n="demo.live">Demo en vivo</span>
+                                    <span class="screen-accuracy" data-i18n="demo.accuracy">98% Precisión</span>
                                 </div>
                             </div>
                         </div>
@@ -146,6 +147,23 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Video -->
+    <section class="demo-video-section" id="demo-video">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="video.badge">Demo real</span>
+                <h2 class="section-title" data-i18n="video.title">Míralo funcionar.</h2>
+                <p class="section-subtitle" data-i18n="video.subtitle">Sin cortes, sin trucos. Así de rápido es.</p>
+            </div>
+            <div class="demo-video-wrapper fade-in">
+                <video class="demo-video" controls playsinline preload="metadata" poster="images/ivozlinkimage.png">
+                    <source src="demo.mp4" type="video/mp4">
+                    <span data-i18n="video.unsupported">Tu navegador no soporta video. Descarga iVoz y pruébalo gratis.</span>
+                </video>
             </div>
         </div>
     </section>
@@ -279,51 +297,38 @@
         </div>
     </section>
 
-    <!-- Testimonials Carousel -->
+    <!-- Who It's For -->
     <section class="testimonials">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Testimonios</h2>
+                <span class="section-tag" data-i18n="who.badge">Para quién es</span>
+                <h2 class="section-title" data-i18n="who.title">Hecho para la gente que escribe todo el día.</h2>
             </div>
-            <div class="testimonials-carousel">
-                <div class="testimonial-card active">
-                    <p class="testimonial-text">"Dicté toda mi tesis en 2 horas en lugar de 8 tipear. iVoz: exactamente lo que necesitaba."</p>
-                    <p class="testimonial-author">— María S., Estudiante</p>
-                    <p class="testimonial-location">Universidad de Buenos Aires</p>
+            <div class="who-grid">
+                <div class="who-card fade-in">
+                    <span class="who-emoji">🎓</span>
+                    <h3 data-i18n="who.card1">Estudiantes</h3>
+                    <p data-i18n="who.card1-desc">Dicta tu tesis, tus apuntes y ensayos en una fracción del tiempo. Captura las clases sin perderte nada.</p>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Escribo 3 artículos por semana. Con iVoz, ahorré 10 horas. Definitivo."</p>
-                    <p class="testimonial-author">— Sofia R., Escritora</p>
-                    <p class="testimonial-location">México</p>
+                <div class="who-card fade-in">
+                    <span class="who-emoji">🎬</span>
+                    <h3 data-i18n="who.card2">Creadores de contenido</h3>
+                    <p data-i18n="who.card2-desc">Guiones de video, newsletters y posts — dictados mientras caminas. Tu voz es tu teclado más rápido.</p>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Documentación, prompts, todo dictado. Offline cuando no hay WiFi. Confiable."</p>
-                    <p class="testimonial-author">— Juan P., Developer</p>
-                    <p class="testimonial-location">Argentina</p>
+                <div class="who-card fade-in">
+                    <span class="who-emoji">💻</span>
+                    <h3 data-i18n="who.card3">Developers y vibe coders</h3>
+                    <p data-i18n="who.card3-desc">Prompts, documentación y comentarios dictados directo en Cursor, VS Code o ChatGPT. Incluso sin WiFi.</p>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Respondo 50 mails por día en 1 hora. Antes demoraba 3. iVoz cambió mi flujo de trabajo completamente."</p>
-                    <p class="testimonial-author">— Carlos M., Freelancer Marketing</p>
-                    <p class="testimonial-location">Colombia</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Dicto mis guiones de video mientras camino. Sin tipear nada. El workflow es increíble."</p>
-                    <p class="testimonial-author">— Lucia P., Content Creator</p>
-                    <p class="testimonial-location">Chile</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Dicté mis notas de clase en tiempo real. Ahora tengo todo documentado sin perder información."</p>
-                    <p class="testimonial-author">— Andrés L., Estudiante</p>
-                    <p class="testimonial-location">Universidad Nacional de Córdoba</p>
+                <div class="who-card fade-in">
+                    <span class="who-emoji">💼</span>
+                    <h3 data-i18n="who.card4">Trabajadores de oficina</h3>
+                    <p data-i18n="who.card4-desc">Vacía tu bandeja de entrada dictando respuestas en vez de teclearlas. Los 50 mails del día, en una hora.</p>
                 </div>
             </div>
-            <div class="testimonials-dots">
-                <span class="dot active" onclick="switchTestimonial(0)"></span>
-                <span class="dot" onclick="switchTestimonial(1)"></span>
-                <span class="dot" onclick="switchTestimonial(2)"></span>
-                <span class="dot" onclick="switchTestimonial(3)"></span>
-                <span class="dot" onclick="switchTestimonial(4)"></span>
-                <span class="dot" onclick="switchTestimonial(5)"></span>
+            <div class="dev-note fade-in">
+                <p class="dev-note-text" data-i18n="who.devnote">"Construí iVoz porque estaba pagando $15/mes por un dictado que mandaba mi voz a un servidor. Esto es lo que yo mismo uso todos los días — y por eso es un pago único, no una suscripción."</p>
+                <p class="dev-note-author" data-i18n="who.devnote-author">— Brandan, desarrollador de iVoz · Córdoba, Argentina</p>
             </div>
         </div>
     </section>
@@ -339,8 +344,8 @@
                 <div class="step">
                     <div class="step-number">01</div>
                     <div class="step-content">
-                        <h3>Presiona</h3>
-                        <p>Mantén presionada tu tecla de acceso directo (por defecto: Ctrl). Un punto rojo y barras de onda aparecen en la parte inferior de tu pantalla.</p>
+                        <h3 data-i18n="howitworks.step1">Presiona</h3>
+                        <p data-i18n="howitworks.step1-desc">Mantén presionada tu tecla de acceso directo (por defecto: Ctrl). Un punto rojo y barras de onda aparecen en la parte inferior de tu pantalla.</p>
                     </div>
                     <div class="step-visual">
                         <div class="step-mockup step-mockup-listening">
@@ -354,29 +359,29 @@
                 <div class="step">
                     <div class="step-number">02</div>
                     <div class="step-content">
-                        <h3>Habla</h3>
-                        <p>Habla a tu ritmo normal. El Motor Neural procesa tu voz en tiempo real. Di "nueva línea" o "nuevo párrafo" para formatear.</p>
+                        <h3 data-i18n="howitworks.step2">Habla</h3>
+                        <p data-i18n="howitworks.step2-desc">Habla a tu ritmo normal. El Motor Neural procesa tu voz en tiempo real. Di "nueva línea" o "nuevo párrafo" para formatear.</p>
                     </div>
                     <div class="step-visual">
                         <div class="step-mockup step-mockup-talking">
-                            <div class="transcription-line" style="--delay: 0s">Hola equipo, respecto a la</div>
-                            <div class="transcription-line" style="--delay: 0.3s">hoja de ruta del Q3, creo que</div>
-                            <div class="transcription-line" style="--delay: 0.6s">deberíamos priorizar...</div>
+                            <div class="transcription-line" style="--delay: 0s" data-i18n="demo.line1">Hola equipo, respecto a la</div>
+                            <div class="transcription-line" style="--delay: 0.3s" data-i18n="demo.line2">hoja de ruta del Q3, creo que</div>
+                            <div class="transcription-line" style="--delay: 0.6s" data-i18n="demo.line3">deberíamos priorizar...</div>
                         </div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">03</div>
                     <div class="step-content">
-                        <h3>Listo</h3>
-                        <p>Suelta la tecla. El texto aparece al instante en cualquier campo — ChatGPT, Slack, un editor de código, donde sea. Una marca dorada confirma que está listo.</p>
+                        <h3 data-i18n="howitworks.step3">Listo</h3>
+                        <p data-i18n="howitworks.step3-desc">Suelta la tecla. El texto aparece al instante en cualquier campo — ChatGPT, Slack, un editor de código, donde sea. Una marca dorada confirma que está listo.</p>
                     </div>
                     <div class="step-visual">
                         <div class="step-mockup step-mockup-done">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9B54C" stroke-width="2.5">
                                 <polyline points="20 6 9 17 4 12"/>
                             </svg>
-                            <span>Listo</span>
+                            <span data-i18n="demo.done">Listo</span>
                         </div>
                     </div>
                 </div>
@@ -386,19 +391,19 @@
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <polyline points="20 6 9 17 4 12"/>
                     </svg>
-                    <span><strong>Funciona offline</strong> — tu voz nunca sale de tu Mac</span>
+                    <span data-i18n="howitworks.point1"><strong>Funciona offline</strong> — tu voz nunca sale de tu Mac</span>
                 </div>
                 <div class="point">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <polyline points="20 6 9 17 4 12"/>
                     </svg>
-                    <span><strong>Sin cloud.</strong> Sin datos en servidores extraños.</span>
+                    <span data-i18n="howitworks.point2"><strong>Sin cloud.</strong> Sin datos en servidores extraños.</span>
                 </div>
                 <div class="point">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <polyline points="20 6 9 17 4 12"/>
                     </svg>
-                    <span><strong>Privacidad real.</strong> Velocidad real.</span>
+                    <span data-i18n="howitworks.point3"><strong>Privacidad real.</strong> Velocidad real.</span>
                 </div>
             </div>
         </div>
@@ -410,7 +415,7 @@
             <div class="section-header">
                 <span class="section-tag" data-i18n="pricing.badge">Precios</span>
                 <h2 class="section-title" data-i18n="pricing.title">Una sola compra. Para siempre.</h2>
-                <p class="section-subtitle">Sin suscripciones mensuales. Sin compromisos.</p>
+                <p class="section-subtitle" data-i18n="pricing.subtitle">Sin suscripciones mensuales. Sin compromisos.</p>
             </div>
 
             <!-- Powered by Payment Partners -->
@@ -421,25 +426,25 @@
             </div>
 
             <div class="pricing-grid pricing-grid-two">
-                <!-- Free Plan -->
+                <!-- Free Trial -->
                 <div class="pricing-card pricing-card-free">
                     <div class="pricing-card-header">
-                        <h3 data-i18n="pricing.free">Gratis</h3>
-                        <p class="pricing-desc" data-i18n="pricing.free-trial">2,000 palabras/mes<br><strong>Para siempre</strong></p>
+                        <h3 data-i18n="pricing.free">Prueba Gratis</h3>
+                        <p class="pricing-desc" data-i18n="pricing.free-trial">3 días · <strong>Todo ilimitado</strong></p>
                     </div>
                     <ul class="pricing-features">
-                        <li><span class="check">✓</span> 2,000 palabras cada mes</li>
-                        <li><span class="check">✓</span> Funciona 100% offline</li>
-                        <li><span class="check">✓</span> Sin nube, sin suscripción</li>
-                        <li><span class="cross">—</span> <span class="strikethrough">Limpieza con IA</span></li>
-                        <li><span class="cross">—</span> <span class="strikethrough">Todos los tonos</span></li>
+                        <li data-i18n="pricing.free-f1"><span class="check">✓</span> Palabras ilimitadas por 3 días</li>
+                        <li data-i18n="pricing.free-f2"><span class="check">✓</span> Todas las funciones Pro incluidas</li>
+                        <li data-i18n="pricing.free-f3"><span class="check">✓</span> Funciona 100% offline</li>
+                        <li data-i18n="pricing.free-f4"><span class="check">✓</span> Sin tarjeta de crédito</li>
+                        <li data-i18n="pricing.free-f5"><span class="check">✓</span> Sin nube, sin suscripción</li>
                     </ul>
-                    <a href="iVoz.dmg" class="btn btn-outline" download>Descargar Gratis</a>
+                    <a href="iVoz.dmg" class="btn btn-outline" download data-i18n="pricing.free-cta">Descargar Gratis</a>
                 </div>
 
                 <!-- Pro Plan -->
                 <div class="pricing-card pricing-card-pro">
-                    <div class="pricing-popular">Oferta de Lanzamiento</div>
+                    <div class="pricing-popular" data-i18n="pricing.launch-offer">Oferta de Lanzamiento</div>
                     <div class="pricing-card-header">
                         <span class="pricing-badge pricing-badge-pro" data-i18n="pricing.pro">PRO</span>
                         <div class="pricing-promo-section">
@@ -447,38 +452,39 @@
                                 <h3 class="promo-price" data-i18n="pricing.pro-price">$9.99<span class="price-note"> de una sola vez</span></h3>
                                 <p class="regular-price"><s>$24.99</s></p>
                             </div>
-                            <div class="savings-badge">Ahorras $15</div>
+                            <div class="savings-badge" data-i18n="pricing.savings">Ahorras $15</div>
                         </div>
-                        <p class="pricing-desc" data-i18n="pricing.pro-lifetime">Unlimited. Para siempre.</p>
+                        <p class="pricing-desc" data-i18n="pricing.pro-lifetime">Ilimitado. Para siempre.</p>
                     </div>
                     <ul class="pricing-features">
-                        <li><span class="check">✓</span> <strong data-i18n="pricing.pro-feature">Palabras ilimitadas</strong></li>
-                        <li><span class="check">✓</span> Limpieza con IA</li>
-                        <li><span class="check">✓</span> Todos los tonos (4)</li>
-                        <li><span class="check">✓</span> Vocabulario ilimitado</li>
-                        <li><span class="check">✓</span> Historial completo</li>
-                        <li><span class="check">✓</span> 100% offline, sin cloud</li>
+                        <li data-i18n="pricing.pro-f1"><span class="check">✓</span> <strong>Palabras ilimitadas</strong></li>
+                        <li data-i18n="pricing.pro-f2"><span class="check">✓</span> Limpieza con IA</li>
+                        <li data-i18n="pricing.pro-f3"><span class="check">✓</span> Todos los tonos (4)</li>
+                        <li data-i18n="pricing.pro-f4"><span class="check">✓</span> Vocabulario ilimitado</li>
+                        <li data-i18n="pricing.pro-f5"><span class="check">✓</span> Historial completo</li>
+                        <li data-i18n="pricing.pro-f6"><span class="check">✓</span> 100% offline, sin cloud</li>
                     </ul>
-                    <button class="btn btn-primary btn-large" onclick="openCheckoutModal()" style="width: 100%;">
+                    <button class="btn btn-primary btn-large" onclick="openCheckoutModal()" style="width: 100%;" data-i18n="pricing.pro-cta">
                         Desbloquear Pro — $9.99
                     </button>
-                    <p class="pricing-footer">Un pago. Tuyo para siempre.</p>
+                    <p class="pricing-footer" data-i18n="pricing.pro-footer">Un pago. Tuyo para siempre.</p>
+                    <p class="pricing-guarantee" data-i18n="pricing.guarantee">🛡️ Garantía de 30 días — si no te gusta, te devuelvo el dinero.</p>
                 </div>
             </div>
 
             <!-- Competitor Comparison -->
             <div class="competitor-comparison">
-                <h3>Comparado con software similar</h3>
+                <h3 data-i18n="compare.title">Comparado con software similar</h3>
                 <div class="comparison-cards">
                     <div class="comparison-item ivoz-item">
                         <span class="comparison-name">iVoz Pro</span>
                         <span class="comparison-price">$9.99</span>
-                        <span class="comparison-period">de una sola vez</span>
+                        <span class="comparison-period" data-i18n="compare.ivoz-period">de una sola vez</span>
                     </div>
                     <div class="comparison-item competitor-item">
-                        <span class="comparison-name">Whisper Flow</span>
+                        <span class="comparison-name">Wispr Flow</span>
                         <span class="comparison-price">$180</span>
-                        <span class="comparison-period">por año ($15/mes)</span>
+                        <span class="comparison-period" data-i18n="compare.wispr-period">por año ($15/mes)</span>
                     </div>
                 </div>
             </div>
@@ -489,39 +495,39 @@
     <section class="comparison">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Comparación</span>
-                <h2 class="section-title">Elige lo que necesitas.</h2>
+                <span class="section-tag" data-i18n="table.badge">Comparación</span>
+                <h2 class="section-title" data-i18n="table.title">Elige lo que necesitas.</h2>
             </div>
             <div class="comparison-table">
                 <div class="comparison-header">
-                    <div class="comparison-cell comparison-feature">Característica</div>
-                    <div class="comparison-cell comparison-free">Gratis</div>
+                    <div class="comparison-cell comparison-feature" data-i18n="table.col-feature">Característica</div>
+                    <div class="comparison-cell comparison-free" data-i18n="table.col-trial">Prueba (3 días)</div>
                     <div class="comparison-cell comparison-pro">Pro ($9.99)</div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Palabras/mes</div>
-                    <div class="comparison-cell comparison-free">2,000</div>
-                    <div class="comparison-cell comparison-pro"><strong>Ilimitadas</strong></div>
+                    <div class="comparison-cell comparison-feature" data-i18n="table.row1">Palabras</div>
+                    <div class="comparison-cell comparison-free" data-i18n="table.row1-trial">Ilimitadas (3 días)</div>
+                    <div class="comparison-cell comparison-pro"><strong data-i18n="table.row1-pro">Ilimitadas</strong></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Limpieza IA</div>
-                    <div class="comparison-cell comparison-free"><span class="no">—</span></div>
+                    <div class="comparison-cell comparison-feature" data-i18n="table.row2">Limpieza IA</div>
+                    <div class="comparison-cell comparison-free"><span class="yes">✓</span></div>
                     <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Todos los tonos</div>
-                    <div class="comparison-cell comparison-free"><span class="no">—</span></div>
+                    <div class="comparison-cell comparison-feature" data-i18n="table.row3">Todos los tonos</div>
+                    <div class="comparison-cell comparison-free"><span class="yes">✓</span></div>
                     <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Historial</div>
-                    <div class="comparison-cell comparison-free"><span class="no">—</span></div>
+                    <div class="comparison-cell comparison-feature" data-i18n="table.row4">Historial</div>
+                    <div class="comparison-cell comparison-free"><span class="yes">✓</span></div>
                     <div class="comparison-cell comparison-pro"><span class="yes">✓</span></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-cell comparison-feature">Pago</div>
-                    <div class="comparison-cell comparison-free">Gratis forever</div>
-                    <div class="comparison-cell comparison-pro">Una sola vez</div>
+                    <div class="comparison-cell comparison-feature" data-i18n="table.row5">Después de la prueba</div>
+                    <div class="comparison-cell comparison-free" data-i18n="table.row5-trial">Se bloquea hasta pagar</div>
+                    <div class="comparison-cell comparison-pro" data-i18n="table.row5-pro">Tuyo para siempre</div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell comparison-feature">100% Offline</div>
@@ -536,15 +542,15 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-card">
-                <h2>¿Listo para trabajar más rápido?</h2>
-                <p>Comienza tu prueba gratuita hoy. Sin tarjeta de crédito. Sin obligaciones.</p>
+                <h2 data-i18n="cta.title">¿Listo para trabajar más rápido?</h2>
+                <p data-i18n="cta.subtitle">Comienza tu prueba gratuita hoy. Sin tarjeta de crédito. Sin obligaciones.</p>
                 <a href="iVoz.dmg" class="btn btn-primary btn-large" download>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                     </svg>
-                    Comenzar Prueba Gratuita — 7 días sin pagar
+                    <span data-i18n="cta.button">Comenzar Prueba Gratuita — 3 días ilimitados</span>
                 </a>
-                <span class="cta-subtext">Sin tarjeta de crédito. Sin obligaciones.</span>
+                <span class="cta-subtext" data-i18n="cta.subtext">Sin tarjeta de crédito. $9.99 una sola vez si te gusta. Garantía de 30 días.</span>
             </div>
         </div>
     </section>
@@ -553,9 +559,9 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Contacto</span>
-                <h2 class="section-title">¿Preguntas?</h2>
-                <p class="section-subtitle">Estamos aquí para ayudarte.</p>
+                <span class="section-tag" data-i18n="contact.badge">Contacto</span>
+                <h2 class="section-title" data-i18n="contact.title">¿Preguntas?</h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Estamos aquí para ayudarte.</p>
             </div>
             <div class="contact-card">
                 <div class="contact-item">
@@ -565,7 +571,7 @@
                         </svg>
                     </div>
                     <div class="contact-info">
-                        <span class="contact-label">Teléfono / WhatsApp</span>
+                        <span class="contact-label" data-i18n="contact.label">Teléfono / WhatsApp</span>
                         <a href="tel:351-212-2600" class="contact-value">351-212-2600</a>
                     </div>
                 </div>
@@ -583,57 +589,57 @@
             <div class="faq-list">
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>¿Es realmente gratis?</span>
+                        <span data-i18n="faq.q1">¿Cómo funciona la prueba gratis?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Sí. iVoz es gratis para descargar y usar. Todos los modelos de IA se descargan una sola vez al iniciar y funcionan localmente para siempre. Sin suscripciones ocultas, sin claves API. Puedes usar la versión gratuita con 2,000 palabras al mes. Si necesitas más, Pro cuesta solo $4.99/mes.</p>
+                        <p data-i18n="faq.a1">Descargas iVoz y lo usas completo — palabras ilimitadas, limpieza con IA, todos los tonos — gratis por 3 días. Sin tarjeta de crédito. Cuando termina la prueba, desbloqueas Pro por $9.99 una sola vez. Sin suscripciones, sin pagos mensuales, nunca.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>¿Qué Mac necesito?</span>
+                        <span data-i18n="faq.q2">¿Qué Mac necesito?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Cualquier Mac con chip Apple Silicon (M1, M2, M3 o M4) y macOS 14 (Sonoma) o posterior. La app está optimizada para el Motor Neural y la GPU, por lo que funciona rápido y eficiente en todos los chips Apple Silicon.</p>
+                        <p data-i18n="faq.a2">Cualquier Mac con chip Apple Silicon (M1, M2, M3 o M4) y macOS 14 (Sonoma) o posterior. La app está optimizada para el Motor Neural y la GPU, por lo que funciona rápido y eficiente en todos los chips Apple Silicon.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>¿Funciona con mi idioma?</span>
+                        <span data-i18n="faq.q3">¿Funciona con mi idioma?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>iVoz transcribe en 10 idiomas: español, inglés, portugués, francés, alemán, italiano, japonés, coreano, chino y detección automática. La interfaz de la app está disponible en español, inglés y portugués. La limpieza con IA funciona mejor en español e inglés.</p>
+                        <p data-i18n="faq.a3">iVoz transcribe en 10 idiomas: español, inglés, portugués, francés, alemán, italiano, japonés, coreano, chino y detección automática. La interfaz de la app está disponible en español, inglés y portugués. La limpieza con IA funciona mejor en español e inglés.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>¿Cuánto espacio usa?</span>
+                        <span data-i18n="faq.q4">¿Cuánto espacio usa?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>La app ocupa ~34 MB. Los modelos se descargan al iniciar por primera vez: el modelo de voz es ~145 MB y el modelo opcional de limpieza IA es ~1 GB. Total: aproximadamente 1.2 GB. Todo se almacena localmente y nunca se actualiza a menos que tú elijas hacerlo.</p>
+                        <p data-i18n="faq.a4">La app ocupa ~34 MB. Los modelos se descargan al iniciar por primera vez: el modelo de voz es ~145 MB y el modelo opcional de limpieza IA es ~1 GB. Total: aproximadamente 1.2 GB. Todo se almacena localmente y nunca se actualiza a menos que tú elijas hacerlo.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>¿Mis datos son realmente privados?</span>
+                        <span data-i18n="faq.q5">¿Mis datos son realmente privados?</span>
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Absolutamente. Tu audio se procesa completamente en tu Mac usando el Motor Neural y la GPU. Nada se envía a ningún servidor. Tu historial de transcripciones se guarda localmente en ~/Library/Application Support/HikariYaps/. No recopilamos telemetría, no requerimos cuenta y no rastreamos nada.</p>
+                        <p data-i18n="faq.a5">Absolutamente. Tu audio se procesa completamente en tu Mac usando el Motor Neural y la GPU. Nada se envía a ningún servidor. Tu historial de transcripciones se guarda localmente en ~/Library/Application Support/HikariYaps/. No recopilamos telemetría, no requerimos cuenta y no rastreamos nada.</p>
                     </div>
                 </div>
             </div>
@@ -654,7 +660,7 @@
                         </svg>
                         <span>iVoz</span>
                     </a>
-                    <p class="footer-tagline">Dictado por voz para macOS.<br>Construido con amor, café y el Motor Neural.</p>
+                    <p class="footer-tagline" data-i18n="footer.tagline">Dictado por voz para macOS.<br>Construido con amor, café y el Motor Neural.</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-col">
@@ -672,7 +678,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-i18n="footer.copyright">© 2025 iVoz. Todos los derechos reservados.</p>
+                <p data-i18n="footer.copyright">© 2026 iVoz. Todos los derechos reservados.</p>
                 <p class="footer-contact">Contacto: 351-212-2600</p>
                 <p class="footer-location">Córdoba, Argentina</p>
 
@@ -702,7 +708,7 @@
             <div id="checkout-step-1" class="checkout-step">
                 <div class="checkout-header">
                     <h2 data-i18n="checkout.title">Completa tu compra</h2>
-                    <p>iVoz Pro — Acceso ilimitado de por vida</p>
+                    <p data-i18n="checkout.subtitle">iVoz Pro — Acceso ilimitado de por vida</p>
                 </div>
 
                 <form id="customer-form" style="margin-bottom: 30px;">
@@ -717,7 +723,7 @@
                     </div>
 
                     <div style="display: flex; gap: 12px;">
-                        <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()" style="flex: 1;">
+                        <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()" style="flex: 1;" data-i18n="checkout.cancel">
                             Cancelar
                         </button>
                         <button type="button" class="btn btn-primary" onclick="proceedToPayment()" style="flex: 1;" data-i18n="checkout.next">
@@ -726,7 +732,7 @@
                     </div>
                 </form>
 
-                <p style="font-size: 0.85rem; color: #999; text-align: center;">
+                <p style="font-size: 0.85rem; color: #999; text-align: center;" data-i18n="checkout.secure">
                     Tu información está segura y encriptada.
                 </p>
             </div>
@@ -750,7 +756,7 @@
                             </div>
                             <div style="flex: 1; text-align: left;">
                                 <div style="font-weight: 600; color: #1d1d1f;">PayPal</div>
-                                <div style="font-size: 0.85rem; color: #86868b;">Rápido y seguro</div>
+                                <div style="font-size: 0.85rem; color: #86868b;" data-i18n="checkout.paypal-desc">Rápido y seguro</div>
                             </div>
                             <div style="font-weight: 600; color: #1d1d1f;">$9.99</div>
                         </div>
@@ -774,7 +780,7 @@
                             </div>
                             <div style="flex: 1; text-align: left;">
                                 <div style="font-weight: 600; color: #1d1d1f;">Mercado Pago</div>
-                                <div style="font-size: 0.85rem; color: #86868b;">Tarjetas y billeteras</div>
+                                <div style="font-size: 0.85rem; color: #86868b;" data-i18n="checkout.mp-desc">Tarjetas y billeteras</div>
                             </div>
                             <div style="font-weight: 600; color: #1d1d1f;">$9.99</div>
                         </div>
@@ -785,15 +791,15 @@
                 <div id="paypal-render-container" style="display: none; margin-bottom: 20px;"></div>
 
                 <!-- Loading state for Mercado Pago redirect -->
-                <div id="mp-loading-state" style="display: none; text-align: center; padding: 20px; margin-bottom: 20px; color: #666;">
+                <div id="mp-loading-state" style="display: none; text-align: center; padding: 20px; margin-bottom: 20px; color: #666;" data-i18n="checkout.mp-redirect">
                     Redirigiendo a Mercado Pago...
                 </div>
 
                 <div id="payment-nav-buttons" style="display: flex; gap: 12px;">
-                    <button type="button" class="btn btn-outline" onclick="backToStep1()" style="flex: 1;">
+                    <button type="button" class="btn btn-outline" onclick="backToStep1()" style="flex: 1;" data-i18n="checkout.back">
                         Atrás
                     </button>
-                    <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()" style="flex: 1;">
+                    <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()" style="flex: 1;" data-i18n="checkout.cancel">
                         Cancelar
                     </button>
                 </div>
