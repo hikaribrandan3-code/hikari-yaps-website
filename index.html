@@ -817,7 +817,10 @@
 
             <div style="background: #f5f5f5; padding: 20px; border-radius: 12px; margin-bottom: 24px;">
                 <p style="font-size: 0.9rem; color: #666; margin-bottom: 12px;" data-i18n="download.paste_instruction">Open Terminal and paste this:</p>
-                <code style="display: block; background: #2d2d2d; color: #f8f8f2; padding: 14px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.85rem; line-height: 1.4;">cd ~/Downloads && ditto -x -k iVoz.zip . && chmod -R u+w iVoz.app && xattr -dr com.apple.quarantine iVoz.app && rm -rf /Applications/iVoz.app && mv iVoz.app /Applications/ && open /Applications/iVoz.app</code>
+                <div style="display: flex; gap: 8px; align-items: stretch;">
+                    <code id="download-cmd" style="flex: 1; background: #2d2d2d; color: #f8f8f2; padding: 14px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.85rem; line-height: 1.4; cursor: pointer;" title="Click to copy">cd ~/Downloads && ditto -x -k iVoz.zip . && chmod -R u+w iVoz.app && xattr -dr com.apple.quarantine iVoz.app && rm -rf /Applications/iVoz.app && mv iVoz.app /Applications/ && open /Applications/iVoz.app</code>
+                    <button type="button" class="btn" id="copy-cmd-btn" style="padding: 12px 16px; background: #0071e3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; white-space: nowrap; transition: background 0.2s;" onclick="copyDownloadCommand()" data-i18n="download.copy_button">Copy</button>
+                </div>
             </div>
 
             <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;" data-i18n="download.explanation">

@@ -155,6 +155,7 @@ const translations = {
     'download.paste_instruction': 'Abre Terminal y pega esto:',
     'download.explanation': 'Esto descarga, extrae, elimina la advertencia de seguridad e inicia la app. Sin cuotas corporativas — el 100% de tu pago va al desarrollo.',
     'download.download_button': 'Descargar (10 MB)',
+    'download.copy_button': 'Copiar',
   },
   en: {
     'nav.features': 'Features',
@@ -311,6 +312,7 @@ const translations = {
     'download.paste_instruction': 'Open Terminal and paste this:',
     'download.explanation': 'This downloads, extracts, removes the security warning, and launches the app. No corporate signing fees — 100% of your payment goes to development.',
     'download.download_button': 'Download (10 MB)',
+    'download.copy_button': 'Copy',
   }
 };
 
@@ -869,6 +871,28 @@ async function initiateMercadoPagoPayment(email) {
         document.getElementById('payment-method-selector').style.display = 'flex';
         document.getElementById('payment-nav-buttons').style.display = 'flex';
     }
+}
+
+// ===== COPY TO CLIPBOARD =====
+function copyDownloadCommand() {
+    const cmd = document.getElementById('download-cmd').textContent;
+    const btn = document.getElementById('copy-cmd-btn');
+
+    navigator.clipboard.writeText(cmd).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        btn.style.background = '#10b981';
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '#0071e3';
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+        btn.textContent = 'Copy failed';
+        setTimeout(() => {
+            btn.textContent = 'Copy';
+        }, 2000);
+    });
 }
 
 // ===== DOWNLOAD LINK INTERCEPTOR =====
