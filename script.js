@@ -880,18 +880,20 @@ function copyDownloadCommand() {
 
     navigator.clipboard.writeText(cmd).then(() => {
         const originalText = btn.textContent;
-        btn.textContent = '✓ Copied!';
-        btn.style.background = '#10b981';
+        btn.textContent = '✓ Copied';
+        btn.style.borderColor = '#34c759';
+        btn.style.color = '#34c759';
         setTimeout(() => {
             btn.textContent = originalText;
-            btn.style.background = '#0071e3';
+            btn.style.borderColor = '#d2d2d7';
+            btn.style.color = '#0071e3';
         }, 2000);
     }).catch(err => {
         console.error('Failed to copy:', err);
-        btn.textContent = 'Copy failed';
+        btn.textContent = 'Failed';
         setTimeout(() => {
             btn.textContent = 'Copy';
-        }, 2000);
+        }, 1500);
     });
 }
 
